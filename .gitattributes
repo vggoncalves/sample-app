@@ -1,0 +1,67 @@
+# ============================================================
+# Sample App — Angular 22 / TypeScript / Node.js
+# ============================================================
+
+# Texto
+* text=auto
+
+# Documentação e configuração
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.properties text eol=lf
+*.conf text eol=lf
+*.ini text eol=lf
+*.toml text eol=lf
+
+# Shell / Linux / containers
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+
+# Windows
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Angular / frontend
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+*.svg text eol=lf
+
+# Node / lockfiles
+package.json text eol=lf
+package-lock.json text eol=lf
+npm-shrinkwrap.json text eol=lf
+
+# Binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.7z binary
+*.gz binary
+*.tar binary
+*.tgz binary
+*.jar binary
+*.war binary
+*.class binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

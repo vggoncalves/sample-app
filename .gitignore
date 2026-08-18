@@ -1,0 +1,56 @@
+# ============================================================
+# Sample App — Angular 22 / Node.js
+# ============================================================
+
+# Dependências
+node_modules/
+
+# Angular / build
+dist/
+out-tsc/
+.angular/cache/
+
+# Testes / cobertura
+coverage/
+.nyc_output/
+
+# Sonar
+.scannerwork/
+.sonar/
+
+# Node / npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# Variáveis locais e segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# IDEs / editores
+.idea/
+*.iml
+.vscode/
+
+# Temporários
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
