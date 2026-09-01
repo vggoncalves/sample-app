@@ -1,0 +1,35 @@
+<section aria-labelledby="titulo-unidades">
+  <div class="page-heading">
+    <div><p class="eyebrow">Administração</p><h1 id="titulo-unidades">Unidades organizacionais</h1><p>Consulte a estrutura organizacional e refine os resultados pelos filtros abaixo.</p></div>
+    <button type="button" class="primary" disabled aria-disabled="true" title="Disponível na próxima etapa">Nova unidade</button>
+  </div>
+
+  <form class="filters" (ngSubmit)="aplicarFiltros()">
+    <label>Nome<input name="nome" [(ngModel)]="filtroNome" placeholder="Ex.: Financeiro"></label>
+    <label>Código<input name="codigo" [(ngModel)]="filtroCodigo" placeholder="Ex.: DIR-FIN"></label>
+    <label>Sigla<input name="sigla" [(ngModel)]="filtroSigla" placeholder="Ex.: DF"></label>
+    <label>Tipo<select name="tipo" [(ngModel)]="filtroTipo"><option value="">Todos</option>@for (tipo of tipos; track tipo) { <option [value]="tipo">{{ rotuloTipo(tipo) }}</option> }</select></label>
+    <label>Situação<select name="ativa" [(ngModel)]="filtroAtiva"><option value="">Todas</option><option value="true">Ativas</option><option value="false">Inativas</option></select></label>
+    <label>Posição<select name="raiz" [(ngModel)]="filtroRaiz"><option value="">Todas</option><option value="true">Somente raízes</option><option value="false">Com unidade pai</option></select></label>
+    <div class="filter-actions"><button type="submit" class="primary">Filtrar</button><button type="button" (click)="limparFiltros()">Limpar</button></div>
+  </form>
+
+  @if (estado() === 'carregando') { <output class="state" aria-live="polite">Carregando unidades organizacionais…</output> }
+  @if (estado() === 'erro') { <div class="state error" role="alert"><p>{{ mensagemErro() }}</p><button type="button" (click)="aplicarFiltros()">Tentar novamente</button></div> }
+  @if (estado() === 'sucesso' && pagina(); as resultado) {
+    @if (resultado.conteudo.length === 0) { <div class="state"><h2>Nenhuma unidade encontrada</h2><p>Altere os filtros ou limpe-os para consultar todas as unidades.</p></div> }
+    @else {
+      <p class="result-summary">{{ resultado.totalElementos }} unidade(s) encontrada(s)</p>
+      <div class="table-wrapper"><table><caption class="sr-only">Lista de unidades organizacionais</caption><thead><tr>
+        <th><button type="button" (click)="ordenar('codigo')" [attr.aria-label]="'Ordenar por código. ' + rotuloOrdenacao('codigo')">Código</button></th>
+        <th><button type="button" (click)="ordenar('nome')" [attr.aria-label]="'Ordenar por nome. ' + rotuloOrdenacao('nome')">Nome</button></th>
+        <th><button type="button" (click)="ordenar('sigla')" [attr.aria-label]="'Ordenar por sigla. ' + rotuloOrdenacao('sigla')">Sigla</button></th>
+        <th><button type="button" (click)="ordenar('tipo')" [attr.aria-label]="'Ordenar por tipo. ' + rotuloOrdenacao('tipo')">Tipo</button></th>
+        <th><button type="button" (click)="ordenar('ativa')" [attr.aria-label]="'Ordenar por situação. ' + rotuloOrdenacao('ativa')">Situação</button></th>
+      </tr></thead><tbody>@for (unidade of resultado.conteudo; track unidade.id) { <tr>
+        <td data-label="Código">{{ unidade.codigo }}</td><td data-label="Nome">{{ unidade.nome }}</td><td data-label="Sigla">{{ unidade.sigla || '—' }}</td><td data-label="Tipo">{{ rotuloTipo(unidade.tipo) }}</td><td data-label="Situação"><span class="status" [class.inactive]="!unidade.ativa">{{ unidade.ativa ? 'Ativa' : 'Inativa' }}</span></td>
+      </tr> }</tbody></table></div>
+      <nav class="pagination" aria-label="Paginação"><button type="button" (click)="irParaPagina(resultado.pn - 1)" [disabled]="resultado.pn === 0">Anterior</button><span>Página {{ resultado.pn + 1 }} de {{ resultado.totalPaginas }}</span><button type="button" (click)="irParaPagina(resultado.pn + 1)" [disabled]="resultado.pn + 1 >= resultado.totalPaginas">Próxima</button></nav>
+    }
+  }
+</section>

@@ -1,59 +1,76 @@
-# SampleApp
+# Sample App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+Frontend web do projeto **Sample**, desenvolvido com **Angular 22** e **TypeScript**.
 
-## Development server
+O `sample-app` é responsável pela interface web administrativa e pela integração com as APIs do backend.
 
-To start a local development server, run:
+## Tecnologias
 
-```bash
-ng serve
-```
+- Angular 22
+- TypeScript
+- Node.js 24
+- npm
+- Angular CLI
+- SonarQube
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Executar o projeto
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Dentro do Dev Container:
 
 ```bash
-ng generate --help
+cd /workspaces/sample/sample-app
 ```
 
-## Building
-
-To build the project run:
+Instale as dependências:
 
 ```bash
-ng build
+npm ci
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Com o backend já iniciado na porta `8080`, execute o Angular com o proxy da API:
 
 ```bash
-ng test
+npx ng serve --host 0.0.0.0 --proxy-config proxy.conf.json
 ```
 
-## Running end-to-end tests
+O `--host 0.0.0.0` permite que o encaminhamento de portas alcance o servidor dentro do Dev Container. O `proxy.conf.json` encaminha as requisições iniciadas em `/api` para `http://localhost:8080`, sem expor credenciais no frontend.
 
-For end-to-end (e2e) testing, run:
+A aplicação estará disponível em:
+
+```text
+http://localhost:4200/administracao/unidades
+```
+
+No Dev Container, encaminhe também a porta `4200` na aba **Ports** do VS Code e use **Open in Browser**. Não use `npm run start:container` para integração com a API enquanto esse script não incluir `--proxy-config proxy.conf.json`.
+
+Ao carregar a listagem, o navegador solicitará HTTP Basic pela API. Use as credenciais locais definidas antes de iniciar o backend; elas nunca devem ser incluídas no código ou no README.
+
+## Executar testes
+
+Execute os testes:
 
 ```bash
-ng e2e
+npx ng test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Para executar os testes sem modo interativo:
 
-## Additional Resources
+```bash
+npx ng test --watch=false
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para executar os testes com cobertura:
+
+```bash
+npx ng test --coverage --watch=false
+```
+
+## SonarQube
+
+Execute a análise do projeto:
+
+```bash
+npm run sonar -- \
+  -Dsonar.projectKey=sample-app \
+  -Dsonar.host.url=http://host.docker.internal:9000
+```

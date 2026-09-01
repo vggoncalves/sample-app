@@ -1,0 +1,7 @@
+:host { display: block; min-height: 100dvh; }
+.app-header { align-items: center; background: #123c69; box-sizing: border-box; color: #fff; display: flex; gap: 2rem; min-height: 4rem; padding: .75rem max(1rem, calc((100% - 75rem) / 2)); }
+.brand { color: inherit; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+nav a { border-radius: .25rem; color: #dbeafe; display: inline-block; padding: .5rem .625rem; text-decoration: none; }
+nav a:hover, nav a.active { background: #0b2d50; color: #fff; }
+.app-content { margin: 0 auto; max-width: 75rem; padding: 1.5rem 1rem 2.5rem; }
+@media (max-width: 34rem) { .app-header { align-items: flex-start; flex-direction: column; gap: .25rem; } }
