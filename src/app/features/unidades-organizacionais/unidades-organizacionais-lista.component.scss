@@ -8,7 +8,9 @@ label { display: grid; font-size: .9rem; font-weight: 600; gap: .35rem; }
 input, select { background: #fff; border: 1px solid #9ba9bb; border-radius: .25rem; min-height: 2.5rem; padding: .45rem .55rem; width: 100%; }
 .filter-actions { align-items: end; display: flex; gap: .5rem; }
 button { background: #fff; border: 1px solid #65758b; border-radius: .25rem; min-height: 2.5rem; padding: .4rem .75rem; }
-button.primary { background: #1365a8; border-color: #1365a8; color: #fff; }
+button.primary, .button.primary { background: #1365a8; border-color: #1365a8; color: #fff; }
+.button { border: 1px solid #65758b; border-radius: .25rem; display: inline-block; min-height: 2.5rem; padding: .4rem .75rem; text-decoration: none; }
+.state.success { border-color: #2c7a3f; color: #14532d; }
 button:disabled { cursor: not-allowed; opacity: .55; }
 .state { background: #fff; border: 1px solid #dce3ed; border-radius: .5rem; margin-top: 1rem; padding: 2rem 1rem; text-align: center; }
 .state.error { border-color: #c9372c; color: #7a271a; }

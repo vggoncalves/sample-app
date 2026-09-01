@@ -59,17 +59,22 @@ Para executar os testes sem modo interativo:
 npx ng test --watch=false
 ```
 
-Para executar os testes com cobertura:
+Antes do SonarQube, gere a evidência de cobertura:
 
 ```bash
-npx ng test --coverage --watch=false
+npm run test:coverage
+test -f coverage/sample-app/lcov.info && echo "LCOV gerado"
 ```
+
+O arquivo `coverage/sample-app/lcov.info` é o relatório LCOV: ele informa ao SonarQube quais linhas, funções e ramificações foram exercitadas pelos testes. Não publique uma análise sem confirmar esse arquivo, pois o SonarQube poderá registrar cobertura `0,0%` mesmo que os testes tenham sido executados.
 
 ## SonarQube
 
-Execute a análise do projeto:
+Execute a análise somente após a geração e conferência do LCOV:
 
 ```bash
+npm run test:coverage
+test -f coverage/sample-app/lcov.info && echo "LCOV gerado"
 npm run sonar -- \
   -Dsonar.projectKey=sample-app \
   -Dsonar.host.url=http://host.docker.internal:9000

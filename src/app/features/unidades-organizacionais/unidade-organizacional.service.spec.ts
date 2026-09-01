@@ -1,6 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { CriarUnidadeRequest } from './unidade-organizacional.models';
 import { UnidadeOrganizacionalService } from './unidade-organizacional.service';
 
 describe('UnidadeOrganizacionalService', () => {
@@ -22,6 +23,25 @@ describe('UnidadeOrganizacionalService', () => {
     expect(request.request.params.get('ps')).toBe('10');
     expect(request.request.params.get('sort')).toBe('-nome,codigo');
     request.flush({ conteudo: [], pn: 2, ps: 10, totalElementos: 0, totalPaginas: 0 });
+  });
+
+  it('obtém o token CSRF antes de criar uma unidade', () => {
+    const unidade: CriarUnidadeRequest = { codigo: 'DIR-FIN', nome: 'Diretoria Financeira', sigla: 'DF', descricao: null, tipo: 'DIRETORIA', unidadePaiId: null, emailContato: 'financeiro@example.com', telefone: '+5511999999999' };
+    service.criar(unidade).subscribe();
+    http.expectOne('/csrf').flush({ headerName: 'X-CSRF-TOKEN', parameterName: '_csrf', token: 'token-de-teste' });
+    const request = http.expectOne((candidate) => candidate.method === 'POST' && candidate.url.endsWith('/unidadesOrganizacionais'));
+    expect(request.request.headers.get('X-CSRF-TOKEN')).toBe('token-de-teste');
+    expect(request.request.body).toEqual(unidade);
+    request.flush({ ...unidade, id: 'id-1', ativa: true, versao: 0 });
+  });
+
+  it('obtém o token CSRF antes de alterar uma unidade', () => {
+    service.alterar('id-1', { nome: 'Financeiro', sigla: null, descricao: null, tipo: 'DIRETORIA', unidadePaiId: null, emailContato: null, telefone: null, versao: 2 }).subscribe();
+    http.expectOne('/csrf').flush({ headerName: 'X-CSRF-TOKEN', parameterName: '_csrf', token: 'token-de-teste' });
+    const request = http.expectOne((candidate) => candidate.method === 'PUT' && candidate.url.endsWith('/unidadesOrganizacionais/id-1'));
+    expect(request.request.headers.get('X-CSRF-TOKEN')).toBe('token-de-teste');
+    expect(request.request.body.versao).toBe(2);
+    request.flush({});
   });
 
   it('não envia filtros vazios', () => {

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:container": "ng serve --host 0.0.0.0",
+    "start:cont-prx": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

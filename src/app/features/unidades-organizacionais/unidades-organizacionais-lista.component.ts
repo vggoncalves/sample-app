@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiRequestError } from '../../core/http/api-error.interceptor';
@@ -10,7 +11,7 @@ type EstadoTela = 'carregando' | 'sucesso' | 'erro';
 
 @Component({
   selector: 'app-unidades-organizacionais-lista',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './unidades-organizacionais-lista.component.html',
   styleUrl: './unidades-organizacionais-lista.component.scss'
 })
@@ -19,6 +20,7 @@ export class UnidadesOrganizacionaisListaComponent {
   readonly pagina = signal<PaginaUnidades | null>(null);
   readonly estado = signal<EstadoTela>('carregando');
   readonly mensagemErro = signal('');
+  readonly mensagemSucesso = signal('');
   readonly campoOrdenacao = signal<CampoOrdenacaoUnidade>('nome');
   readonly direcaoDescendente = signal(false);
 
@@ -31,8 +33,13 @@ export class UnidadesOrganizacionaisListaComponent {
 
   private readonly service = inject(UnidadeOrganizacionalService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
 
-  constructor() { this.carregar(); }
+  constructor() {
+    const sucesso = this.route.snapshot.queryParamMap.get('sucesso');
+    if (sucesso) this.mensagemSucesso.set(sucesso === 'alterada' ? 'Unidade organizacional alterada com sucesso.' : 'Unidade organizacional cadastrada com sucesso.');
+    this.carregar();
+  }
 
   aplicarFiltros(): void { this.carregar(0); }
 

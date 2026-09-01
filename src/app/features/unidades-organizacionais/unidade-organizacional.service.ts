@@ -1,9 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ConsultaUnidades, PaginaUnidades } from './unidade-organizacional.models';
+import { Observable, switchMap } from 'rxjs';
+import { AlterarUnidadeRequest, ConsultaUnidades, CriarUnidadeRequest, PaginaUnidades, TokenCsrf, UnidadeOrganizacional } from './unidade-organizacional.models';
 
 const UNIDADES_API_URL = '/api/unidadesOrganizacionais/v1.0.0/unidadesOrganizacionais';
+const CSRF_URL = '/csrf';
 
 @Injectable({ providedIn: 'root' })
 export class UnidadeOrganizacionalService {
@@ -15,5 +16,19 @@ export class UnidadeOrganizacionalService {
       if (value !== undefined && value !== null && value !== '') params = params.set(key, String(value));
     }
     return this.http.get<PaginaUnidades>(UNIDADES_API_URL, { params });
+  }
+
+  consultar(id: string): Observable<UnidadeOrganizacional> { return this.http.get<UnidadeOrganizacional>(`${UNIDADES_API_URL}/${id}`); }
+
+  criar(request: CriarUnidadeRequest): Observable<UnidadeOrganizacional> {
+    return this.comTokenCsrf((headers) => this.http.post<UnidadeOrganizacional>(UNIDADES_API_URL, request, { headers }));
+  }
+
+  alterar(id: string, request: AlterarUnidadeRequest): Observable<UnidadeOrganizacional> {
+    return this.comTokenCsrf((headers) => this.http.put<UnidadeOrganizacional>(`${UNIDADES_API_URL}/${id}`, request, { headers }));
+  }
+
+  private comTokenCsrf<T>(requisicao: (headers: HttpHeaders) => Observable<T>): Observable<T> {
+    return this.http.get<TokenCsrf>(CSRF_URL).pipe(switchMap((csrf) => requisicao(new HttpHeaders({ [csrf.headerName]: csrf.token }))));
   }
 }

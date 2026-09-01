@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { NEVER, of, throwError } from 'rxjs';
 import { ApiRequestError } from '../../core/http/api-error.interceptor';
 import { UnidadeOrganizacionalService } from './unidade-organizacional.service';
@@ -9,7 +10,11 @@ const pagina = { conteudo: [{ id: '1', codigo: 'DIR-FIN', nome: 'Diretoria Finan
 async function criarComponente(listar: UnidadeOrganizacionalService['listar']) {
   await TestBed.configureTestingModule({
     imports: [UnidadesOrganizacionaisListaComponent],
-    providers: [{ provide: UnidadeOrganizacionalService, useValue: { listar } }]
+    providers: [
+      provideRouter([]),
+      { provide: ActivatedRoute, useValue: { snapshot: { queryParamMap: { get: () => null } } } },
+      { provide: UnidadeOrganizacionalService, useValue: { listar } }
+    ]
   }).compileComponents();
   const fixture = TestBed.createComponent(UnidadesOrganizacionaisListaComponent);
   fixture.detectChanges();

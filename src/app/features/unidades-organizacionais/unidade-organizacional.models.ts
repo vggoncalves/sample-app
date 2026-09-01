@@ -20,3 +20,12 @@ export interface ConsultaUnidades {
   codigo?: string; nome?: string; sigla?: string; tipo?: TipoUnidade; ativa?: boolean; raiz?: boolean;
   pn?: number; ps?: number; sort?: string;
 }
+
+export interface CriarUnidadeRequest {
+  codigo: string; nome: string; sigla: string | null; descricao: string | null; tipo: TipoUnidade;
+  unidadePaiId: string | null; emailContato: string | null; telefone: string | null;
+}
+
+export interface AlterarUnidadeRequest extends Omit<CriarUnidadeRequest, 'codigo'> { versao: number; }
+
+export interface TokenCsrf { headerName: string; parameterName: string; token: string; }
