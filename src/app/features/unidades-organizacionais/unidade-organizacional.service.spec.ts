@@ -44,6 +44,15 @@ describe('UnidadeOrganizacionalService', () => {
     request.flush({});
   });
 
+  it('obtém o token CSRF antes de alterar a situação da unidade', () => {
+    service.alterarSituacao('id-1', { ativa: false, versao: 4 }).subscribe();
+    http.expectOne('/csrf').flush({ headerName: 'X-CSRF-TOKEN', parameterName: '_csrf', token: 'token-de-teste' });
+    const request = http.expectOne((candidate) => candidate.method === 'PATCH' && candidate.url.endsWith('/unidadesOrganizacionais/id-1'));
+    expect(request.request.headers.get('X-CSRF-TOKEN')).toBe('token-de-teste');
+    expect(request.request.body).toEqual({ ativa: false, versao: 4 });
+    request.flush({});
+  });
+
   it('não envia filtros vazios', () => {
     service.listar({ nome: '', pn: 0 }).subscribe();
     const request = http.expectOne((candidate) => candidate.url.endsWith('/unidadesOrganizacionais'));

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
-import { AlterarUnidadeRequest, ConsultaUnidades, CriarUnidadeRequest, PaginaUnidades, TokenCsrf, UnidadeOrganizacional } from './unidade-organizacional.models';
+import { AlterarSituacaoRequest, AlterarUnidadeRequest, CapacidadesUnidade, ConsultaArvoreUnidades, ConsultaUnidades, CriarUnidadeRequest, NoArvoreUnidade, PaginaUnidades, TokenCsrf, UnidadeOrganizacional } from './unidade-organizacional.models';
 
 const UNIDADES_API_URL = '/api/unidadesOrganizacionais/v1.0.0/unidadesOrganizacionais';
 const CSRF_URL = '/csrf';
@@ -19,6 +19,18 @@ export class UnidadeOrganizacionalService {
   }
 
   consultar(id: string): Observable<UnidadeOrganizacional> { return this.http.get<UnidadeOrganizacional>(`${UNIDADES_API_URL}/${id}`); }
+
+  capacidades(): Observable<CapacidadesUnidade> { return this.http.get<CapacidadesUnidade>(`${UNIDADES_API_URL}/capacidades`); }
+
+  arvore(consulta: ConsultaArvoreUnidades = {}): Observable<NoArvoreUnidade[]> {
+    let params = new HttpParams();
+    for (const [key, value] of Object.entries(consulta)) if (value !== undefined && value !== null) params = params.set(key, String(value));
+    return this.http.get<NoArvoreUnidade[]>(`${UNIDADES_API_URL}/arvore`, { params });
+  }
+
+  alterarSituacao(id: string, request: AlterarSituacaoRequest): Observable<UnidadeOrganizacional> {
+    return this.comTokenCsrf((headers) => this.http.patch<UnidadeOrganizacional>(`${UNIDADES_API_URL}/${id}`, request, { headers }));
+  }
 
   criar(request: CriarUnidadeRequest): Observable<UnidadeOrganizacional> {
     return this.comTokenCsrf((headers) => this.http.post<UnidadeOrganizacional>(UNIDADES_API_URL, request, { headers }));

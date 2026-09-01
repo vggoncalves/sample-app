@@ -1,7 +1,7 @@
 <section aria-labelledby="titulo-unidades">
   <div class="page-heading">
     <div><p class="eyebrow">Administração</p><h1 id="titulo-unidades">Unidades organizacionais</h1><p>Consulte a estrutura organizacional e refine os resultados pelos filtros abaixo.</p></div>
-    <a class="primary button" routerLink="nova">Nova unidade</a>
+    @if (capacidades().podeCriar) { <a class="primary button" routerLink="nova">Nova unidade</a> }
   </div>
 
   <form class="filters" (ngSubmit)="aplicarFiltros()">
@@ -26,9 +26,9 @@
         <th><button type="button" (click)="ordenar('nome')" [attr.aria-label]="'Ordenar por nome. ' + rotuloOrdenacao('nome')">Nome</button></th>
         <th><button type="button" (click)="ordenar('sigla')" [attr.aria-label]="'Ordenar por sigla. ' + rotuloOrdenacao('sigla')">Sigla</button></th>
         <th><button type="button" (click)="ordenar('tipo')" [attr.aria-label]="'Ordenar por tipo. ' + rotuloOrdenacao('tipo')">Tipo</button></th>
-        <th><button type="button" (click)="ordenar('ativa')" [attr.aria-label]="'Ordenar por situação. ' + rotuloOrdenacao('ativa')">Situação</button></th><th>Ações</th>
+        <th><button type="button" (click)="ordenar('ativa')" [attr.aria-label]="'Ordenar por situação. ' + rotuloOrdenacao('ativa')">Situação</button></th>@if (capacidades().podeAlterar) { <th>Ações</th> }
       </tr></thead><tbody>@for (unidade of resultado.conteudo; track unidade.id) { <tr>
-        <td data-label="Código">{{ unidade.codigo }}</td><td data-label="Nome">{{ unidade.nome }}</td><td data-label="Sigla">{{ unidade.sigla || '—' }}</td><td data-label="Tipo">{{ rotuloTipo(unidade.tipo) }}</td><td data-label="Situação"><span class="status" [class.inactive]="!unidade.ativa">{{ unidade.ativa ? 'Ativa' : 'Inativa' }}</span></td><td data-label="Ações"><a [routerLink]="[unidade.id, 'editar']">Editar</a></td>
+        <td data-label="Código">{{ unidade.codigo }}</td><td data-label="Nome">{{ unidade.nome }}</td><td data-label="Sigla">{{ unidade.sigla || '—' }}</td><td data-label="Tipo">{{ rotuloTipo(unidade.tipo) }}</td><td data-label="Situação"><span class="status" [class.inactive]="!unidade.ativa">{{ unidade.ativa ? 'Ativa' : 'Inativa' }}</span></td>@if (capacidades().podeAlterar) { <td data-label="Ações"><a [routerLink]="[unidade.id, 'editar']">Editar</a></td> }
       </tr> }</tbody></table></div>
       <nav class="pagination" aria-label="Paginação"><button type="button" (click)="irParaPagina(resultado.pn - 1)" [disabled]="resultado.pn === 0">Anterior</button><span>Página {{ resultado.pn + 1 }} de {{ resultado.totalPaginas }}</span><button type="button" (click)="irParaPagina(resultado.pn + 1)" [disabled]="resultado.pn + 1 >= resultado.totalPaginas">Próxima</button></nav>
     }

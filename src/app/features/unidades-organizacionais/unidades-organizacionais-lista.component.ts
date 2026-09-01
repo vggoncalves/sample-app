@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiRequestError } from '../../core/http/api-error.interceptor';
-import { CampoOrdenacaoUnidade, PaginaUnidades, TIPOS_UNIDADE, TipoUnidade } from './unidade-organizacional.models';
+import { CampoOrdenacaoUnidade, CapacidadesUnidade, PaginaUnidades, TIPOS_UNIDADE, TipoUnidade } from './unidade-organizacional.models';
 import { UnidadeOrganizacionalService } from './unidade-organizacional.service';
 
 type EstadoTela = 'carregando' | 'sucesso' | 'erro';
@@ -21,6 +21,7 @@ export class UnidadesOrganizacionaisListaComponent {
   readonly estado = signal<EstadoTela>('carregando');
   readonly mensagemErro = signal('');
   readonly mensagemSucesso = signal('');
+  readonly capacidades = signal<CapacidadesUnidade>({ podeCriar: false, podeAlterar: false, podeAlterarSituacao: false });
   readonly campoOrdenacao = signal<CampoOrdenacaoUnidade>('nome');
   readonly direcaoDescendente = signal(false);
 
@@ -36,6 +37,7 @@ export class UnidadesOrganizacionaisListaComponent {
   private readonly route = inject(ActivatedRoute);
 
   constructor() {
+    this.service.capacidades().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({ next: (capacidades) => this.capacidades.set(capacidades) });
     const sucesso = this.route.snapshot.queryParamMap.get('sucesso');
     if (sucesso) this.mensagemSucesso.set(sucesso === 'alterada' ? 'Unidade organizacional alterada com sucesso.' : 'Unidade organizacional cadastrada com sucesso.');
     this.carregar();

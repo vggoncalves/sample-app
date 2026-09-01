@@ -1,0 +1,13 @@
+<section aria-labelledby="titulo-arvore">
+  <div class="page-heading"><div><p class="eyebrow">Administração</p><h1 id="titulo-arvore">Estrutura organizacional</h1><p>Consulte a hierarquia e mantenha a situação das unidades.</p></div><a class="button" routerLink="/administracao/unidades">Ver lista</a></div>
+  <div class="toolbar"><label for="situacao">Situação<select id="situacao" [value]="filtroAtiva()" (change)="filtroAtiva.set($any($event.target).value); carregar()"><option value="todas">Todas</option><option value="ativas">Ativas</option><option value="inativas">Inativas</option></select></label><button type="button" (click)="carregar()">Atualizar árvore</button></div>
+  @if (mensagemErro()) { <div class="state error" role="alert">{{ mensagemErro() }}</div> }
+  @if (mensagemAviso()) { <div class="state notice" role="alert" tabindex="-1">{{ mensagemAviso() }}</div> }
+  @if (carregando()) { <output class="state" aria-live="polite">Carregando estrutura organizacional…</output> }
+  @else if (!mensagemErro() && nosVisiveis.length === 0) { <div class="state">Nenhuma unidade corresponde ao filtro selecionado.</div> }
+  @else if (!mensagemErro()) { <ul class="tree" aria-label="Árvore de unidades organizacionais">@for (item of nosVisiveis; track item.no.unidade.id) { <li class="tree-row" [style.--nivel]="item.nivel"><div class="node">
+    @if (item.no.filhas.length) { <button type="button" class="expander" (click)="alternar(item.no)" [attr.aria-expanded]="expandidos().has(item.no.unidade.id)" [attr.aria-label]="(expandidos().has(item.no.unidade.id) ? 'Recolher' : 'Expandir') + ' ' + item.no.unidade.nome">{{ expandidos().has(item.no.unidade.id) ? '−' : '+' }}</button> } @else { <span class="expander-placeholder" aria-hidden="true"></span> }
+    <div class="node-main"><strong>{{ item.no.unidade.codigo }} — {{ item.no.unidade.nome }}</strong><span>{{ rotuloTipo(item.no.unidade.tipo) }} · {{ item.no.unidade.ativa ? 'Ativa' : 'Inativa' }}</span></div>
+    <div class="node-actions">@if (capacidades().podeAlterar) { <a [routerLink]="['/administracao/unidades', item.no.unidade.id, 'editar']">Editar</a> } @if (capacidades().podeAlterarSituacao) { <button type="button" (click)="alterarSituacao(item.no.unidade)" [disabled]="alterandoId() === item.no.unidade.id">{{ alterandoId() === item.no.unidade.id ? 'Salvando…' : (item.no.unidade.ativa ? 'Desativar' : 'Reativar') }}</button> }</div>
+  </div></li> }</ul> }
+</section>

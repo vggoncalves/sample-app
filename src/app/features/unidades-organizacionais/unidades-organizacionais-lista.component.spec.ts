@@ -13,7 +13,7 @@ async function criarComponente(listar: UnidadeOrganizacionalService['listar']) {
     providers: [
       provideRouter([]),
       { provide: ActivatedRoute, useValue: { snapshot: { queryParamMap: { get: () => null } } } },
-      { provide: UnidadeOrganizacionalService, useValue: { listar } }
+      { provide: UnidadeOrganizacionalService, useValue: { listar, capacidades: () => of({ podeCriar: true, podeAlterar: true, podeAlterarSituacao: true }) } }
     ]
   }).compileComponents();
   const fixture = TestBed.createComponent(UnidadesOrganizacionaisListaComponent);

@@ -29,3 +29,11 @@ export interface CriarUnidadeRequest {
 export interface AlterarUnidadeRequest extends Omit<CriarUnidadeRequest, 'codigo'> { versao: number; }
 
 export interface TokenCsrf { headerName: string; parameterName: string; token: string; }
+
+export interface NoArvoreUnidade { unidade: UnidadeOrganizacional; filhas: NoArvoreUnidade[]; }
+
+export interface ConsultaArvoreUnidades { raizId?: string; ativa?: boolean; profundidade?: number; }
+
+export interface CapacidadesUnidade { podeCriar: boolean; podeAlterar: boolean; podeAlterarSituacao: boolean; }
+
+export interface AlterarSituacaoRequest { ativa: boolean; versao: number; }
