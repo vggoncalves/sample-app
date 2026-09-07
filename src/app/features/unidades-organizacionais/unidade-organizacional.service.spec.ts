@@ -25,6 +25,20 @@ describe('UnidadeOrganizacionalService', () => {
     request.flush({ conteudo: [], pn: 2, ps: 10, totalElementos: 0, totalPaginas: 0 });
   });
 
+  it('consulta unidade, capacidades e árvore pelos contratos da API', () => {
+    service.consultar('id-1').subscribe();
+    http.expectOne((candidate) => candidate.url.endsWith('/unidadesOrganizacionais/id-1')).flush({ id: 'id-1' });
+
+    service.capacidades().subscribe();
+    http.expectOne((candidate) => candidate.url.endsWith('/unidadesOrganizacionais/capacidades')).flush({ podeCriar: true, podeAlterar: false, podeAlterarSituacao: false });
+
+    service.arvore({ ativa: true, profundidade: 3 }).subscribe();
+    const request = http.expectOne((candidate) => candidate.url.endsWith('/unidadesOrganizacionais/arvore'));
+    expect(request.request.params.get('ativa')).toBe('true');
+    expect(request.request.params.get('profundidade')).toBe('3');
+    request.flush([]);
+  });
+
   it('obtém o token CSRF antes de criar uma unidade', () => {
     const unidade: CriarUnidadeRequest = { codigo: 'DIR-FIN', nome: 'Diretoria Financeira', sigla: 'DF', descricao: null, tipo: 'DIRETORIA', unidadePaiId: null, emailContato: 'financeiro@example.com', telefone: '+5511999999999' };
     service.criar(unidade).subscribe();

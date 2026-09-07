@@ -1,8 +1,11 @@
-<header class="app-header">
-  <a class="brand" routerLink="/administracao/unidades">Sample</a>
-  <nav aria-label="Navegação principal">
-    <a routerLink="/administracao/unidades" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Unidades organizacionais</a>
-    <a routerLink="/administracao/unidades/arvore" routerLinkActive="active">Árvore organizacional</a>
-  </nav>
-</header>
-<main class="app-content"><router-outlet /></main>
+<mat-sidenav-container class="app-shell">
+  <mat-sidenav #sidenav class="app-nav" mode="side" opened role="navigation" aria-label="Navegação principal">
+    <a class="brand" routerLink="/administracao/unidades" (click)="sidenav.close()">Sample</a>
+    <a mat-button routerLink="/administracao/unidades" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" (click)="sidenav.close()">Unidades organizacionais</a>
+    <a mat-button routerLink="/administracao/unidades/arvore" routerLinkActive="active" (click)="sidenav.close()">Árvore organizacional</a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary"><button mat-button type="button" (click)="sidenav.toggle()" aria-label="Alternar menu">Menu</button><span>Administração</span></mat-toolbar>
+    <main class="app-content"><router-outlet /></main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
