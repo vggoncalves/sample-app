@@ -17,6 +17,20 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": {
+          "code": "pt-BR",
+          "subPath": "pt-BR"
+        },
+        "locales": {
+          "en": { "translation": "src/locale/messages.en.xlf", "subPath": "en" },
+          "es": { "translation": "src/locale/messages.es.xlf", "subPath": "es" },
+          "fr": { "translation": "src/locale/messages.fr.xlf", "subPath": "fr" },
+          "ar": { "translation": "src/locale/messages.ar.xlf", "subPath": "ar" },
+          "hi": { "translation": "src/locale/messages.hi.xlf", "subPath": "hi" },
+          "zh-Hans": { "translation": "src/locale/messages.zh-Hans.xlf", "subPath": "zh-Hans" }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -24,6 +38,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "i18nMissingTranslation": "error",
             "assets": [
               {
                 "glob": "**/*",
@@ -36,6 +51,7 @@
           },
           "configurations": {
             "production": {
+              "localize": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -51,6 +67,13 @@
               "outputHashing": "all"
             },
             "development": {
+              "localize": ["pt-BR"],
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            },
+            "test": {
+              "localize": false,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -66,6 +89,24 @@
             },
             "development": {
               "buildTarget": "sample-app:build:development"
+            },
+            "en": {
+              "buildTarget": "sample-app:build:development,en"
+            },
+            "es": {
+              "buildTarget": "sample-app:build:development,es"
+            },
+            "fr": {
+              "buildTarget": "sample-app:build:development,fr"
+            },
+            "ar": {
+              "buildTarget": "sample-app:build:development,ar"
+            },
+            "hi": {
+              "buildTarget": "sample-app:build:development,hi"
+            },
+            "zh-Hans": {
+              "buildTarget": "sample-app:build:development,zh-Hans"
             }
           },
           "defaultConfiguration": "development"
@@ -73,12 +114,19 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
+            "buildTarget": "sample-app:build:test",
             "coverage": true,
             "coverageReporters": [
               "html",
               "lcov",
               "text"
             ]
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "sample-app:build:production"
           }
         }
       }
