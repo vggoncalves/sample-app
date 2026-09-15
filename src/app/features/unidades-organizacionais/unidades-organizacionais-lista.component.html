@@ -1,36 +1,45 @@
 <section aria-labelledby="titulo-unidades">
   <div class="page-heading">
-    <div><p class="eyebrow">Administração</p><h1 id="titulo-unidades">Unidades organizacionais</h1><p>Consulte a estrutura organizacional e refine os resultados pelos filtros abaixo.</p></div>
-    @if (capacidades().podeCriar) { <a class="primary button" routerLink="nova">Nova unidade</a> }
+    <div><p class="eyebrow" i18n="@@unidades.lista.administracao">Administração</p><h1 id="titulo-unidades" i18n="@@unidades.lista.titulo">Unidades organizacionais</h1><p i18n="@@unidades.lista.descricao">Consulte a estrutura organizacional e refine os resultados pelos filtros abaixo.</p></div>
+    @if (capacidades().podeCriar) { <a class="primary button" routerLink="nova" i18n="@@unidades.lista.nova">Nova unidade</a> }
   </div>
 
   <form class="filters" (ngSubmit)="aplicarFiltros()">
-    <label>Nome<input name="nome" [(ngModel)]="filtroNome" placeholder="Ex.: Financeiro"></label>
-    <label>Código<input name="codigo" [(ngModel)]="filtroCodigo" placeholder="Ex.: DIR-FIN"></label>
-    <label>Sigla<input name="sigla" [(ngModel)]="filtroSigla" placeholder="Ex.: DF"></label>
-    <label>Tipo<select name="tipo" [(ngModel)]="filtroTipo"><option value="">Todos</option>@for (tipo of tipos; track tipo) { <option [value]="tipo">{{ rotuloTipo(tipo) }}</option> }</select></label>
-    <label>Situação<select name="ativa" [(ngModel)]="filtroAtiva"><option value="">Todas</option><option value="true">Ativas</option><option value="false">Inativas</option></select></label>
-    <label>Posição<select name="raiz" [(ngModel)]="filtroRaiz"><option value="">Todas</option><option value="true">Somente raízes</option><option value="false">Com unidade pai</option></select></label>
-    <div class="filter-actions"><button type="submit" class="primary">Filtrar</button><button type="button" (click)="limparFiltros()">Limpar</button></div>
+    <label i18n="@@unidades.lista.filtro.nome">Nome<input name="nome" [(ngModel)]="filtroNome" placeholder="Ex.: Financeiro" i18n-placeholder="@@unidades.lista.filtro.nome.placeholder"></label>
+    <label i18n="@@unidades.lista.filtro.codigo">Código<input name="codigo" [(ngModel)]="filtroCodigo" placeholder="Ex.: DIR-FIN" i18n-placeholder="@@unidades.lista.filtro.codigo.placeholder"></label>
+    <label i18n="@@unidades.lista.filtro.sigla">Sigla<input name="sigla" [(ngModel)]="filtroSigla" placeholder="Ex.: DF" i18n-placeholder="@@unidades.lista.filtro.sigla.placeholder"></label>
+    <label><span i18n="@@unidades.lista.filtro.tipo">Tipo</span><select name="tipo" [(ngModel)]="filtroTipo">
+      <option value="" i18n="@@unidades.lista.todos">Todos</option>
+      @for (tipo of tipos; track tipo) { <option [value]="tipo">{{ rotuloTipo(tipo) }}</option> }
+    </select></label>
+    <label><span i18n="@@unidades.lista.filtro.situacao">Situação</span><select name="ativa" [(ngModel)]="filtroAtiva">
+      <option value="" i18n="@@unidades.lista.todas">Todas</option><option value="true" i18n="@@unidades.lista.ativas">Ativas</option>
+      <option value="false" i18n="@@unidades.lista.inativas">Inativas</option>
+    </select></label>
+    <label><span i18n="@@unidades.lista.filtro.posicao">Posição</span><select name="raiz" [(ngModel)]="filtroRaiz">
+      <option value="" i18n="@@unidades.lista.todas.raiz">Todas</option><option value="true" i18n="@@unidades.lista.somenteRaizes">Somente raízes</option>
+      <option value="false" i18n="@@unidades.lista.comUnidadePai">Com unidade pai</option>
+    </select></label>
+    <div class="filter-actions"><button type="submit" class="primary" i18n="@@unidades.lista.filtrar">Filtrar</button><button type="button" (click)="limparFiltros()" i18n="@@unidades.lista.limpar">Limpar</button></div>
   </form>
 
   @if (mensagemSucesso()) { <output class="state success" aria-live="polite">{{ mensagemSucesso() }}</output> }
-  @if (estado() === 'carregando') { <output class="state" aria-live="polite">Carregando unidades organizacionais…</output> }
-  @if (estado() === 'erro') { <div class="state error" role="alert"><p>{{ mensagemErro() }}</p><button type="button" (click)="aplicarFiltros()">Tentar novamente</button></div> }
+  @if (estado() === 'carregando') { <output class="state" aria-live="polite" i18n="@@unidades.lista.carregando">Carregando unidades organizacionais…</output> }
+  @if (estado() === 'erro') { <div class="state error" role="alert"><p>{{ mensagemErro() }}</p><button type="button" (click)="aplicarFiltros()" i18n="@@unidades.lista.tentarNovamente">Tentar novamente</button></div> }
   @if (estado() === 'sucesso' && pagina(); as resultado) {
-    @if (resultado.conteudo.length === 0) { <div class="state"><h2>Nenhuma unidade encontrada</h2><p>Altere os filtros ou limpe-os para consultar todas as unidades.</p></div> }
+    @if (resultado.conteudo.length === 0) { <div class="state"><h2 i18n="@@unidades.lista.vazio.titulo">Nenhuma unidade encontrada</h2><p i18n="@@unidades.lista.vazio.descricao">Altere os filtros ou limpe-os para consultar todas as unidades.</p></div> }
     @else {
-      <p class="result-summary">{{ resultado.totalElementos }} unidade(s) encontrada(s)</p>
-      <div class="table-wrapper"><table><caption class="sr-only">Lista de unidades organizacionais</caption><thead><tr>
-        <th><button type="button" (click)="ordenar('codigo')" [attr.aria-label]="'Ordenar por código. ' + rotuloOrdenacao('codigo')">Código</button></th>
-        <th><button type="button" (click)="ordenar('nome')" [attr.aria-label]="'Ordenar por nome. ' + rotuloOrdenacao('nome')">Nome</button></th>
-        <th><button type="button" (click)="ordenar('sigla')" [attr.aria-label]="'Ordenar por sigla. ' + rotuloOrdenacao('sigla')">Sigla</button></th>
-        <th><button type="button" (click)="ordenar('tipo')" [attr.aria-label]="'Ordenar por tipo. ' + rotuloOrdenacao('tipo')">Tipo</button></th>
-        <th><button type="button" (click)="ordenar('ativa')" [attr.aria-label]="'Ordenar por situação. ' + rotuloOrdenacao('ativa')">Situação</button></th>@if (capacidades().podeAlterar) { <th>Ações</th> }
+      <p class="result-summary" i18n="@@unidades.lista.resumo">{{ resultado.totalElementos | number }} unidade(s) encontrada(s)</p>
+      <div class="table-wrapper"><table><caption class="sr-only" i18n="@@unidades.lista.tabela.descricao">Lista de unidades organizacionais</caption><thead><tr>
+        <th><button type="button" (click)="ordenar('codigo')" [attr.aria-label]="rotuloAcaoOrdenar('codigo')" i18n="@@unidades.lista.coluna.codigo">Código</button></th>
+        <th><button type="button" (click)="ordenar('nome')" [attr.aria-label]="rotuloAcaoOrdenar('nome')" i18n="@@unidades.lista.coluna.nome">Nome</button></th>
+        <th><button type="button" (click)="ordenar('sigla')" [attr.aria-label]="rotuloAcaoOrdenar('sigla')" i18n="@@unidades.lista.coluna.sigla">Sigla</button></th>
+        <th><button type="button" (click)="ordenar('tipo')" [attr.aria-label]="rotuloAcaoOrdenar('tipo')" i18n="@@unidades.lista.coluna.tipo">Tipo</button></th>
+        <th><button type="button" (click)="ordenar('ativa')" [attr.aria-label]="rotuloAcaoOrdenar('ativa')" i18n="@@unidades.lista.coluna.situacao">Situação</button></th>@if (capacidades().podeAlterar) { <th i18n="@@unidades.lista.coluna.acoes">Ações</th> }
       </tr></thead><tbody>@for (unidade of resultado.conteudo; track unidade.id) { <tr>
-        <td data-label="Código">{{ unidade.codigo }}</td><td data-label="Nome">{{ unidade.nome }}</td><td data-label="Sigla">{{ unidade.sigla || '—' }}</td><td data-label="Tipo">{{ rotuloTipo(unidade.tipo) }}</td><td data-label="Situação"><span class="status" [class.inactive]="!unidade.ativa">{{ unidade.ativa ? 'Ativa' : 'Inativa' }}</span></td>@if (capacidades().podeAlterar) { <td data-label="Ações"><a [routerLink]="[unidade.id, 'editar']">Editar</a></td> }
+        <td data-label="Código" i18n-data-label="@@unidades.lista.coluna.codigo.mobile">{{ unidade.codigo }}</td><td data-label="Nome" i18n-data-label="@@unidades.lista.coluna.nome.mobile">{{ unidade.nome }}</td><td data-label="Sigla" i18n-data-label="@@unidades.lista.coluna.sigla.mobile">{{ unidade.sigla || '—' }}</td><td data-label="Tipo" i18n-data-label="@@unidades.lista.coluna.tipo.mobile">{{ rotuloTipo(unidade.tipo) }}</td><td data-label="Situação" i18n-data-label="@@unidades.lista.coluna.situacao.mobile"><span class="status" [class.inactive]="!unidade.ativa">{{ rotuloSituacao(unidade.ativa) }}</span></td>@if (capacidades().podeAlterar) { <td data-label="Ações" i18n-data-label="@@unidades.lista.coluna.acoes.mobile"><a [routerLink]="[unidade.id, 'editar']" i18n="@@unidades.lista.editar">Editar</a></td> }
       </tr> }</tbody></table></div>
-      <nav class="pagination" aria-label="Paginação"><button type="button" (click)="irParaPagina(resultado.pn - 1)" [disabled]="resultado.pn === 0">Anterior</button><span>Página {{ resultado.pn + 1 }} de {{ resultado.totalPaginas }}</span><button type="button" (click)="irParaPagina(resultado.pn + 1)" [disabled]="resultado.pn + 1 >= resultado.totalPaginas">Próxima</button></nav>
+      <nav class="pagination" aria-label="Paginação" i18n-aria-label="@@unidades.lista.paginacao.aria"><button type="button" (click)="irParaPagina(resultado.pn - 1)" [disabled]="resultado.pn === 0" i18n="@@unidades.lista.paginacao.anterior">Anterior</button><span i18n="@@unidades.lista.paginacao.indicador">Página {{ resultado.pn + 1 | number }} de {{ resultado.totalPaginas | number }}</span><button type="button" (click)="irParaPagina(resultado.pn + 1)" [disabled]="resultado.pn + 1 >= resultado.totalPaginas" i18n="@@unidades.lista.paginacao.proxima">Próxima</button></nav>
     }
   }
 </section>

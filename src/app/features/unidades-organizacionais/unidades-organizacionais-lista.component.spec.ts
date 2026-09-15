@@ -87,6 +87,6 @@ describe('UnidadesOrganizacionaisListaComponent', () => {
 
   it('formata tipos compostos para exibição', async () => {
     const fixture = await criarComponente(() => of(pagina));
-    expect(fixture.componentInstance.rotuloTipo('UNIDADE_ATENDIMENTO')).toBe('Unidade Atendimento');
+    expect(fixture.componentInstance.rotuloTipo('UNIDADE_ATENDIMENTO')).toBe('Unidade de atendimento');
   });
 });

@@ -1,1 +1,607 @@
-<?xml version="1.0" encoding="UTF-8" ?><xliff version="1.2"><file source-language="pt-BR" datatype="plaintext" original="ng2.template"><body></body></file></xliff>
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="pt-BR" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="shell.navegacao.aria" datatype="html">
+        <source>Navegação principal</source>
+        <target state="needs-review-translation">मुख्य नेविगेशन</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shell.unidades" datatype="html">
+        <source>Unidades organizacionais</source>
+        <target state="needs-review-translation">संगठनात्मक इकाई</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shell.arvore" datatype="html">
+        <source>Árvore organizacional</source>
+        <target state="needs-review-translation">संगठन</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shell.menu.aria" datatype="html">
+        <source>Alternar menu</source>
+        <target state="needs-review-translation">टॉगल मेनू</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shell.menu" datatype="html">
+        <source>Menu</source>
+        <target state="needs-review-translation">मेनू</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shell.administracao" datatype="html">
+        <source>Administração</source>
+        <target state="needs-review-translation">प्रशासन</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="locale.seletor.rotulo" datatype="html">
+        <source>Idioma <x id="START_TAG_SELECT" ctype="x-select" equiv-text="&lt;select [value]=&quot;localeAtual()&quot; (change)=&quot;alterar($event)&quot;&gt;" /><x id="START_BLOCK_FOR" equiv-text="@for (locale of locales; track locale) {" /><x id="START_TAG_OPTION" ctype="x-option" equiv-text="&lt;option [value]=&quot;locale&quot;&gt;" /><x id="INTERPOLATION" equiv-text="{{ nomesNativos[locale] }}" /><x id="CLOSE_TAG_OPTION" ctype="x-option" equiv-text="&lt;/option&gt;" /><x id="CLOSE_BLOCK_FOR" equiv-text="}" /><x id="CLOSE_TAG_SELECT" ctype="x-select" equiv-text="&lt;/select&gt;" /></source>
+        <target state="needs-review-translation">भाषा <x id="START_TAG_SELECT" ctype="x-select" equiv-text="&lt;select [value]=&quot;localeAtual()&quot; (change)=&quot;alterar($event)&quot;&gt;" /><x id="START_BLOCK_FOR" equiv-text="@for (locale of locales; track locale) {" /><x id="START_TAG_OPTION" ctype="x-option" equiv-text="&lt;option [value]=&quot;locale&quot;&gt;" /><x id="INTERPOLATION" equiv-text="{{ nomesNativos[locale] }}" /><x id="CLOSE_TAG_OPTION" ctype="x-option" equiv-text="&lt;/option&gt;" /><x id="CLOSE_BLOCK_FOR" equiv-text="}" /><x id="CLOSE_TAG_SELECT" ctype="x-select" equiv-text="&lt;/select&gt;" /></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/i18n/locale-selector.component.ts</context>
+          <context context-type="linenumber">15,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="locale.seletor.ajuda" datatype="html">
+        <source>A alteração recarrega a interface no idioma selecionado.</source>
+        <target state="needs-review-translation">परिवर्तन चयनित भाषा में इंटरफ़ेस को फिर से लोड करता है।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/i18n/locale-selector.component.ts</context>
+          <context context-type="linenumber">19,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.administracao" datatype="html">
+        <source>Administração</source>
+        <target state="needs-review-translation">प्रशासन</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.titulo" datatype="html">
+        <source>Unidades organizacionais</source>
+        <target state="needs-review-translation">संगठनात्मक इकाई</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.descricao" datatype="html">
+        <source>Consulte a estrutura organizacional e refine os resultados pelos filtros abaixo.</source>
+        <target state="needs-review-translation">संगठनात्मक संरचना देखें और नीचे दिए गए फिल्टर द्वारा परिणामों को परिष्कृत करें।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.nova" datatype="html">
+        <source>Nova unidade</source>
+        <target state="needs-review-translation">न्यू यूनिट</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.nome" datatype="html">
+        <source>Nome<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;nome&quot; [(ngModel)]=&quot;filtroNome&quot; placeholder=&quot;Ex.: Financeiro&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.nome.placeholder&quot;&gt;" /></source>
+        <target state="needs-review-translation">नाम<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;nome&quot; [(ngModel)]=&quot;filtroNome&quot; placeholder=&quot;Ex.: Financeiro&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.nome.placeholder&quot;&gt;" /></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.nome.placeholder" datatype="html">
+        <source>Ex.: Financeiro</source>
+        <target state="needs-review-translation">पूर्व: Financial</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.codigo" datatype="html">
+        <source>Código<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;codigo&quot; [(ngModel)]=&quot;filtroCodigo&quot; placeholder=&quot;Ex.: DIR-FIN&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.codigo.placeholder&quot;&gt;" /></source>
+        <target state="needs-review-translation">कोड<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;codigo&quot; [(ngModel)]=&quot;filtroCodigo&quot; placeholder=&quot;Ex.: DIR-FIN&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.codigo.placeholder&quot;&gt;" /></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.codigo.placeholder" datatype="html">
+        <source>Ex.: DIR-FIN</source>
+        <target state="needs-review-translation">पूर्व: DIR-FIN</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.sigla" datatype="html">
+        <source>Sigla<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;sigla&quot; [(ngModel)]=&quot;filtroSigla&quot; placeholder=&quot;Ex.: DF&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.sigla.placeholder&quot;&gt;" /></source>
+        <target state="needs-review-translation">प्रतीक<x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input name=&quot;sigla&quot; [(ngModel)]=&quot;filtroSigla&quot; placeholder=&quot;Ex.: DF&quot; i18n-placeholder=&quot;@@unidades.lista.filtro.sigla.placeholder&quot;&gt;" /></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.sigla.placeholder" datatype="html">
+        <source>Ex.: DF</source>
+        <target state="needs-review-translation">पूर्व: DF</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.tipo" datatype="html">
+        <source>Tipo</source>
+        <target state="needs-review-translation">प्रकार</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.todos" datatype="html">
+        <source>Todos</source>
+        <target state="needs-review-translation">सब</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.situacao" datatype="html">
+        <source>Situação</source>
+        <target state="needs-review-translation">स्थिति</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.todas" datatype="html">
+        <source>Todas</source>
+        <target state="needs-review-translation">सब</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.ativas" datatype="html">
+        <source>Ativas</source>
+        <target state="needs-review-translation">सक्रिय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.inativas" datatype="html">
+        <source>Inativas</source>
+        <target state="needs-review-translation">निष्क्रिय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">17,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtro.posicao" datatype="html">
+        <source>Posição</source>
+        <target state="needs-review-translation">स्थिति</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.todas.raiz" datatype="html">
+        <source>Todas</source>
+        <target state="needs-review-translation">सब</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.somenteRaizes" datatype="html">
+        <source>Somente raízes</source>
+        <target state="needs-review-translation">केवल जड़ें</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.comUnidadePai" datatype="html">
+        <source>Com unidade pai</source>
+        <target state="needs-review-translation">मूल इकाई के साथ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.filtrar" datatype="html">
+        <source>Filtrar</source>
+        <target state="needs-review-translation">फिल्टर</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.limpar" datatype="html">
+        <source>Limpar</source>
+        <target state="needs-review-translation">स्पष्ट</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">23,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.carregando" datatype="html">
+        <source>Carregando unidades organizacionais…</source>
+        <target state="needs-review-translation">संगठनात्मक इकाइयों को लोड ...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.tentarNovamente" datatype="html">
+        <source>Tentar novamente</source>
+        <target state="needs-review-translation">फिर से कोशिश करो</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.vazio.titulo" datatype="html">
+        <source>Nenhuma unidade encontrada</source>
+        <target state="needs-review-translation">कोई इकाई नहीं मिली</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.vazio.descricao" datatype="html">
+        <source>Altere os filtros ou limpe-os para consultar todas as unidades.</source>
+        <target state="needs-review-translation">फ़िल्टर बदलें या उन्हें सभी इकाइयों से परामर्श करने के लिए साफ करें।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.resumo" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ resultado.totalElementos | number }}" /> unidade(s) encontrada(s)</source>
+        <target state="needs-review-translation"><x id="INTERPOLATION" equiv-text="{{ resultado.totalElementos | number }}" /> इकाई (s) पाया</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.tabela.descricao" datatype="html">
+        <source>Lista de unidades organizacionais</source>
+        <target state="needs-review-translation">संगठनात्मक इकाइयों की सूची</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.codigo" datatype="html">
+        <source>Código</source>
+        <target state="needs-review-translation">कोड</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.nome" datatype="html">
+        <source>Nome</source>
+        <target state="needs-review-translation">नाम</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.sigla" datatype="html">
+        <source>Sigla</source>
+        <target state="needs-review-translation">प्रतीक</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">36,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.tipo" datatype="html">
+        <source>Tipo</source>
+        <target state="needs-review-translation">प्रकार</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.situacao" datatype="html">
+        <source>Situação</source>
+        <target state="needs-review-translation">स्थिति</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.acoes" datatype="html">
+        <source>Ações</source>
+        <target state="needs-review-translation">कार्य</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.codigo.mobile" datatype="html">
+        <source>Código</source>
+        <target state="needs-review-translation">कोड</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.nome.mobile" datatype="html">
+        <source>Nome</source>
+        <target state="needs-review-translation">नाम</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.sigla.mobile" datatype="html">
+        <source>Sigla</source>
+        <target state="needs-review-translation">प्रतीक</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.tipo.mobile" datatype="html">
+        <source>Tipo</source>
+        <target state="needs-review-translation">प्रकार</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.situacao.mobile" datatype="html">
+        <source>Situação</source>
+        <target state="needs-review-translation">स्थिति</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.coluna.acoes.mobile" datatype="html">
+        <source>Ações</source>
+        <target state="needs-review-translation">कार्य</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.editar" datatype="html">
+        <source>Editar</source>
+        <target state="needs-review-translation">संपादित करें</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.paginacao.aria" datatype="html">
+        <source>Paginação</source>
+        <target state="needs-review-translation">पृष्ठ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.paginacao.anterior" datatype="html">
+        <source>Anterior</source>
+        <target state="needs-review-translation">पिछला</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.paginacao.indicador" datatype="html">
+        <source>Página <x id="INTERPOLATION" equiv-text="{{ resultado.pn + 1 | number }}" /> de <x id="INTERPOLATION_1" equiv-text="{{ resultado.totalPaginas | number }}" /></source>
+        <target state="needs-review-translation">पृष्ठ <x id="INTERPOLATION" equiv-text="{{ resultado.pn + 1 | number }}" /> of <x id="INTERPOLATION_1" equiv-text="{{ resultado.totalPaginas | number }}" /></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.paginacao.proxima" datatype="html">
+        <source>Próxima</source>
+        <target state="needs-review-translation">अगला</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.html</context>
+          <context context-type="linenumber">42,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.sucesso.alterada" datatype="html">
+        <source>Unidade organizacional alterada com sucesso.</source>
+        <target state="needs-review-translation">संगठनात्मक इकाई ने सफलतापूर्वक बदल दिया।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.sucesso.criada" datatype="html">
+        <source>Unidade organizacional cadastrada com sucesso.</source>
+        <target state="needs-review-translation">संगठनात्मक इकाई सफलतापूर्वक पंजीकृत है।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.instituicao" datatype="html">
+        <source>Instituição</source>
+        <target state="needs-review-translation">संस्था</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.diretoria" datatype="html">
+        <source>Diretoria</source>
+        <target state="needs-review-translation">निदेशक</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.departamento" datatype="html">
+        <source>Departamento</source>
+        <target state="needs-review-translation">विभाग</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.coordenacao" datatype="html">
+        <source>Coordenação</source>
+        <target state="needs-review-translation">समन्वय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.regional" datatype="html">
+        <source>Regional</source>
+        <target state="needs-review-translation">क्षेत्रीय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.filial" datatype="html">
+        <source>Filial</source>
+        <target state="needs-review-translation">शाखा</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.unidadeAtendimento" datatype="html">
+        <source>Unidade de atendimento</source>
+        <target state="needs-review-translation">केयर यूनिट</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.tipo.outra" datatype="html">
+        <source>Outra</source>
+        <target state="needs-review-translation">अन्य</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.ordenacao.naoOrdenado" datatype="html">
+        <source>Não ordenado</source>
+        <target state="needs-review-translation">Unordered</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.ordenacao.decrescente" datatype="html">
+        <source>Ordem decrescente</source>
+        <target state="needs-review-translation">आदेश कम करना</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.ordenacao.crescente" datatype="html">
+        <source>Ordem crescente</source>
+        <target state="needs-review-translation">बढ़ते आदेश</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.ordenar.aria" datatype="html">
+        <source>Ordenar por <x id="campo" equiv-text="this.rotuloCampo(campo)" />. <x id="ordenacao" equiv-text="this.rotuloOrdenacao(campo)" />.</source>
+        <target state="needs-review-translation">द्वारा क्रमबद्ध <x id="campo" equiv-text="this.rotuloCampo(campo)" />। <x id="ordenacao" equiv-text="this.rotuloOrdenacao(campo)" />।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.situacao.ativa" datatype="html">
+        <source>Ativa</source>
+        <target state="needs-review-translation">सक्रिय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.situacao.inativa" datatype="html">
+        <source>Inativa</source>
+        <target state="needs-review-translation">निष्क्रिय</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.campo.codigo" datatype="html">
+        <source>Código</source>
+        <target state="needs-review-translation">कोड</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.campo.nome" datatype="html">
+        <source>Nome</source>
+        <target state="needs-review-translation">नाम</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.campo.sigla" datatype="html">
+        <source>Sigla</source>
+        <target state="needs-review-translation">प्रतीक</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.campo.tipo" datatype="html">
+        <source>Tipo</source>
+        <target state="needs-review-translation">प्रकार</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.campo.situacao" datatype="html">
+        <source>Situação</source>
+        <target state="needs-review-translation">स्थिति</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.lista.erro.carregar" datatype="html">
+        <source>Não foi possível carregar as unidades organizacionais. Tente novamente.</source>
+        <target state="needs-review-translation">संगठनात्मक इकाइयों को लोड नहीं कर सका। फिर से कोशिश करो।</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-lista.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

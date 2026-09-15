@@ -1,14 +1,14 @@
 <mat-sidenav-container class="app-shell">
-  <mat-sidenav #sidenav class="app-nav" mode="side" opened role="navigation" aria-label="Navegação principal">
+  <mat-sidenav #sidenav class="app-nav" mode="side" opened role="navigation" aria-label="Navegação principal" i18n-aria-label="@@shell.navegacao.aria">
     <a class="brand" routerLink="/administracao/unidades" (click)="sidenav.close()">Sample</a>
-    <a mat-button routerLink="/administracao/unidades" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" (click)="sidenav.close()">Unidades organizacionais</a>
-    <a mat-button routerLink="/administracao/unidades/arvore" routerLinkActive="active" (click)="sidenav.close()">Árvore organizacional</a>
+    <a mat-button routerLink="/administracao/unidades" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" (click)="sidenav.close()" i18n="@@shell.unidades">Unidades organizacionais</a>
+    <a mat-button routerLink="/administracao/unidades/arvore" routerLinkActive="active" (click)="sidenav.close()" i18n="@@shell.arvore">Árvore organizacional</a>
     <app-locale-selector class="locale-in-nav" />
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-button type="button" (click)="sidenav.toggle()" aria-label="Alternar menu">Menu</button>
-      <span>Administração</span>
+      <button mat-button type="button" (click)="sidenav.toggle()" aria-label="Alternar menu" i18n="@@shell.menu" i18n-aria-label="@@shell.menu.aria">Menu</button>
+      <span i18n="@@shell.administracao">Administração</span>
       <span class="toolbar-spacer"></span>
       <app-locale-selector class="locale-in-toolbar" />
     </mat-toolbar>

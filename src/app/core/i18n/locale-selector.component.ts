@@ -11,12 +11,12 @@ const NOMES_NATIVOS: Record<LocaleSuportado, string> = {
 @Component({
   selector: 'app-locale-selector',
   template: `
-    <label class="locale-label">Idioma
+    <label class="locale-label" i18n="@@locale.seletor.rotulo">Idioma
       <select [value]="localeAtual()" (change)="alterar($event)">
         @for (locale of locales; track locale) { <option [value]="locale">{{ nomesNativos[locale] }}</option> }
       </select>
     </label>
-    <span class="visually-hidden">A alteração recarrega a interface no idioma selecionado.</span>
+    <span class="visually-hidden" i18n="@@locale.seletor.ajuda">A alteração recarrega a interface no idioma selecionado.</span>
   `,
   styleUrl: './locale-selector.component.scss'
 })

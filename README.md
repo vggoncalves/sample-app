@@ -67,15 +67,34 @@ test -f coverage/sample-app/lcov.info && echo "LCOV gerado"
 ```
 
 O arquivo `coverage/sample-app/lcov.info` é o relatório LCOV: ele informa ao SonarQube quais linhas, funções e ramificações foram exercitadas pelos testes. Não publique uma análise sem confirmar esse arquivo, pois o SonarQube poderá registrar cobertura `0,0%` mesmo que os testes tenham sido executados.
+O comando só termina com sucesso se a suíte retornar código `0` e se o LCOV tiver sido gerado na execução corrente. O limite padrão é de 120 segundos; ajuste-o, quando necessário, com `SAMPLE_TEST_TIMEOUT_SECONDS`. Ao exceder o prazo, o comando retorna `124` e bloqueia a análise.
 
 ## SonarQube
 
 Execute a análise somente após a geração e conferência do LCOV:
 
+O `presonar` executa a cobertura novamente e só inicia o scanner após essa validação. Portanto, não use um LCOV preexistente como evidência de sucesso.
+
 ```bash
-npm run test:coverage
-test -f coverage/sample-app/lcov.info && echo "LCOV gerado"
 npm run sonar -- \
   -Dsonar.projectKey=sample-app \
   -Dsonar.host.url=http://host.docker.internal:9000
 ```
+
+## Rascunhos de tradução offline
+
+Após reconstruir o Dev Container com o Argos Translate, baixe os modelos uma única vez e gere os rascunhos:
+
+```bash
+npm run i18n:drafts -- --install-models
+```
+
+Nas execuções posteriores, os modelos já instalados são usados localmente:
+
+```bash
+npm run i18n:drafts
+```
+
+Os arquivos `src/locale/messages.*.xlf` gerados recebem o estado `needs-review-translation`. Eles são rascunhos: exigem revisão humana proficiente e aprovação em Pull Request antes de homologação.
+
+O aviso de compilação `Locale data for 'pt-BR' cannot be found. Using locale data for 'pt'.` é esperado: `pt-BR` permanece o locale-fonte e o Angular usa os dados regionais genéricos de `pt`. Esse fallback não impede build, testes nem a análise pelo SonarQube.

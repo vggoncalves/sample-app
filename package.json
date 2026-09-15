@@ -8,6 +8,8 @@
     "start:cont-prx": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json",
     "start:en": "ng serve --configuration en --proxy-config proxy.conf.json",
     "build": "ng build",
+    "i18n:extract": "ng extract-i18n --output-path src/locale",
+    "i18n:drafts": "./scripts/generate-i18n-drafts.sh",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:coverage": "./scripts/test-coverage.sh",
