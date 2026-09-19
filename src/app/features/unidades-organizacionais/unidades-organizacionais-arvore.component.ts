@@ -55,7 +55,8 @@ export class UnidadesOrganizacionaisArvoreComponent {
     });
   }
 
-  rotuloTipo(tipo: string): string { return tipo.replaceAll('_', ' ').toLowerCase().replace(/(^| )\S/g, (letra) => letra.toUpperCase()); }
+  rotuloTipo(tipo: string): string { return ({ INSTITUICAO: $localize`:@@unidades.tipo.instituicao:Instituição`, DIRETORIA: $localize`:@@unidades.tipo.diretoria:Diretoria`, DEPARTAMENTO: $localize`:@@unidades.tipo.departamento:Departamento`, COORDENACAO: $localize`:@@unidades.tipo.coordenacao:Coordenação`, REGIONAL: $localize`:@@unidades.tipo.regional:Regional`, FILIAL: $localize`:@@unidades.tipo.filial:Filial`, UNIDADE_ATENDIMENTO: $localize`:@@unidades.tipo.unidadeAtendimento:Unidade de atendimento`, OUTRA: $localize`:@@unidades.tipo.outra:Outra` } as Record<string, string>)[tipo] ?? tipo; }
+rotuloSituacao(ativa: boolean): string {    return ativa ? $localize`:@@unidades.arvore.situacao.ativa:Ativa` : $localize`:@@unidades.arvore.situacao.inativa:Inativa`;  }
 
   private carregarCapacidades(): void {
     this.service.capacidades().subscribe({ next: (capacidades) => this.capacidades.set(capacidades), error: () => this.capacidades.set(SEM_CAPACIDADES) });

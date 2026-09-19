@@ -3,6 +3,7 @@ import { Component, HostListener, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiRequestError } from '../../core/http/api-error.interceptor';
+import { mensagemErroUnidade } from '../../core/http/unidade-organizacional-error-i18n';
 import { AlterarUnidadeRequest, CriarUnidadeRequest, TIPOS_UNIDADE, TipoUnidade, UnidadeOrganizacional } from './unidade-organizacional.models';
 import { UnidadeOrganizacionalService } from './unidade-organizacional.service';
 
@@ -64,7 +65,7 @@ export class UnidadesOrganizacionaisFormularioComponent {
   }
 
   confirmarSaida(): boolean {
-    return !this.formulario.dirty || this.salvando() || window.confirm('Há alterações não salvas. Deseja sair desta tela?');
+    return !this.formulario.dirty || this.salvando() || window.confirm($localize`:@@unidades.formulario.confirmarSaida:Há alterações não salvas. Deseja sair desta tela?`);
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -75,21 +76,21 @@ export class UnidadesOrganizacionaisFormularioComponent {
   mensagemCampo(campo: string): string | null {
     const controle = this.formulario.controls[campo as keyof typeof this.formulario.controls];
     if (!controle.touched || !controle.errors) return null;
-    if (controle.errors['required']) return 'Este campo é obrigatório.';
+    if (controle.errors['required']) return $localize`:@@unidades.formulario.campo.obrigatorio:Este campo é obrigatório.`;
     if (controle.errors['minlength']) return `Informe ao menos ${controle.errors['minlength'].requiredLength} caracteres.`;
     if (controle.errors['maxlength']) return `Informe no máximo ${controle.errors['maxlength'].requiredLength} caracteres.`;
-    if (controle.errors['email']) return 'Informe um e-mail válido.';
+    if (controle.errors['email']) return $localize`:@@unidades.formulario.campo.email:Informe um e-mail válido.`;
     if (controle.errors['pattern']) return campo === 'telefone' ? 'Use o formato internacional, por exemplo +5511999999999.' : 'Use letras, números, ponto, hífen ou sublinhado.';
-    if (controle.errors['propriaUnidade']) return 'Uma unidade não pode ser sua própria unidade pai.';
+    if (controle.errors['propriaUnidade']) return $localize`:@@unidades.formulario.campo.propriaUnidade:Uma unidade não pode ser sua própria unidade pai.`;
     return controle.errors['api'] ?? null;
   }
 
-  rotuloTipo(tipo: TipoUnidade): string { return tipo.replaceAll('_', ' ').toLowerCase().replace(/(^| )\S/g, (letra) => letra.toUpperCase()); }
+  rotuloTipo(tipo: TipoUnidade): string { return ({ INSTITUICAO: $localize`:@@unidades.tipo.instituicao:Instituição`, DIRETORIA: $localize`:@@unidades.tipo.diretoria:Diretoria`, DEPARTAMENTO: $localize`:@@unidades.tipo.departamento:Departamento`, COORDENACAO: $localize`:@@unidades.tipo.coordenacao:Coordenação`, REGIONAL: $localize`:@@unidades.tipo.regional:Regional`, FILIAL: $localize`:@@unidades.tipo.filial:Filial`, UNIDADE_ATENDIMENTO: $localize`:@@unidades.tipo.unidadeAtendimento:Unidade de atendimento`, OUTRA: $localize`:@@unidades.tipo.outra:Outra` } as Record<TipoUnidade, string>)[tipo]; }
 
   private inicializar(): void {
     this.service.listar({ ativa: true, ps: 100, sort: 'nome,codigo' }).subscribe({
       next: (pagina) => this.unidadesPai.set(pagina.conteudo.filter((unidade) => unidade.id !== this.id)),
-      error: () => this.mensagemErro.set('Não foi possível carregar as opções de unidade pai. Tente novamente.')
+      error: () => this.mensagemErro.set($localize`:@@unidades.formulario.erro.carregarUnidadesPai:Não foi possível carregar as opções de unidade pai. Tente novamente.`)
     });
     if (!this.id) { this.carregando.set(false); return; }
     this.service.consultar(this.id).subscribe({
@@ -125,14 +126,14 @@ export class UnidadesOrganizacionaisFormularioComponent {
   private nuloSeVazio(valor: string): string | null { const normalizado = valor.trim(); return normalizado || null; }
 
   private aplicarErro(error: unknown): void {
-    const mensagemPadrao = 'Não foi possível salvar a unidade organizacional. Tente novamente.';
+    const mensagemPadrao = $localize`:@@unidades.formulario.erro.salvar:Não foi possível salvar a unidade organizacional. Tente novamente.`;
     if (!(error instanceof ApiRequestError)) { this.mensagemErro.set(mensagemPadrao); return; }
     let erroDeCampo = false;
     for (const erro of error.errors) {
       const campo = erro.campo as keyof typeof this.formulario.controls | undefined;
       const controle = campo && this.formulario.controls[campo];
-      if (controle && erro.erro) { controle.setErrors({ ...controle.errors, api: erro.erro }); controle.markAsTouched(); erroDeCampo = true; }
+      if (controle && erro.erro) { controle.setErrors({ ...controle.errors, api: mensagemErroUnidade(erro, mensagemPadrao) }); controle.markAsTouched(); erroDeCampo = true; }
     }
-    this.mensagemErro.set(erroDeCampo ? 'Revise os campos destacados.' : error.message);
+    this.mensagemErro.set(erroDeCampo ? $localize`:@@unidades.formulario.erro.revisarCampos:Revise os campos destacados.` : mensagemErroUnidade(error.errors[0], mensagemPadrao));
   }
 }

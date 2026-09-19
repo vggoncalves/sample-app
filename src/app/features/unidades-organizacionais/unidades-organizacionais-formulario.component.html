@@ -1,27 +1,37 @@
 <section aria-labelledby="titulo-formulario">
   <div class="page-heading">
-    <div><p class="eyebrow">Administração</p><h1 id="titulo-formulario">{{ modoEdicao ? 'Editar unidade organizacional' : 'Nova unidade organizacional' }}</h1><p>Campos marcados com * são obrigatórios.</p></div>
-    <a routerLink="/administracao/unidades" class="button">Voltar à lista</a>
+    <div>
+      <p class="eyebrow" i18n="@@unidades.formulario.administracao">Administração</p>
+      @if (modoEdicao) { <h1 id="titulo-formulario" i18n="@@unidades.formulario.titulo.editar">Editar unidade organizacional</h1> }
+      @else { <h1 id="titulo-formulario" i18n="@@unidades.formulario.titulo.nova">Nova unidade organizacional</h1> }
+      <p i18n="@@unidades.formulario.obrigatorios">Campos marcados com * são obrigatórios.</p>
+    </div>
+    <a routerLink="/administracao/unidades" class="button" i18n="@@unidades.formulario.voltar">Voltar à lista</a>
   </div>
 
-  @if (carregando()) { <output class="state" aria-live="polite">Carregando dados da unidade…</output> }
+  @if (carregando()) { <output class="state" aria-live="polite" i18n="@@unidades.formulario.carregando">Carregando dados da unidade…</output> }
   @else {
     <form class="formulario" [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
       @if (mensagemErro()) { <div class="form-error" role="alert">{{ mensagemErro() }}</div> }
       <div class="grid">
-        <label for="codigo">Código *<input id="codigo" formControlName="codigo" aria-describedby="erro-codigo" autocomplete="off"></label>
-        <label for="nome">Nome *<input id="nome" formControlName="nome" aria-describedby="erro-nome"></label>
-        <label for="sigla">Sigla<input id="sigla" formControlName="sigla" aria-describedby="erro-sigla"></label>
-        <label for="tipo">Tipo *<select id="tipo" formControlName="tipo" aria-describedby="erro-tipo"><option value="">Selecione</option>@for (tipo of tipos; track tipo) { <option [value]="tipo">{{ rotuloTipo(tipo) }}</option> }</select></label>
-        <label for="unidadePaiId">Unidade pai<select id="unidadePaiId" formControlName="unidadePaiId" aria-describedby="erro-unidadePaiId"><option value="">Sem unidade pai</option>@for (unidade of unidadesPai(); track unidade.id) { <option [value]="unidade.id">{{ unidade.codigo }} — {{ unidade.nome }}</option> }</select></label>
-        <label for="emailContato">E-mail de contato<input id="emailContato" type="email" formControlName="emailContato" aria-describedby="erro-emailContato" autocomplete="email"></label>
-        <label for="telefone">Telefone<input id="telefone" formControlName="telefone" aria-describedby="erro-telefone" placeholder="+5511999999999" autocomplete="tel"></label>
-        <label for="descricao" class="full">Descrição<textarea id="descricao" formControlName="descricao" rows="4" aria-describedby="erro-descricao"></textarea></label>
+        <label for="codigo"><span i18n="@@unidades.formulario.codigo">Código *</span><input id="codigo" formControlName="codigo" aria-describedby="erro-codigo" autocomplete="off"></label>
+        <label for="nome"><span i18n="@@unidades.formulario.nome">Nome *</span><input id="nome" formControlName="nome" aria-describedby="erro-nome"></label>
+        <label for="sigla"><span i18n="@@unidades.formulario.sigla">Sigla</span><input id="sigla" formControlName="sigla" aria-describedby="erro-sigla"></label>
+        <label for="tipo"><span i18n="@@unidades.formulario.tipo">Tipo *</span><select id="tipo" formControlName="tipo" aria-describedby="erro-tipo"><option value="" i18n="@@unidades.formulario.tipo.selecione">Selecione</option>@for (tipo of tipos; track tipo) { <option [value]="tipo">{{ rotuloTipo(tipo) }}</option> }</select></label>
+        <label for="unidadePaiId"><span i18n="@@unidades.formulario.unidadePai">Unidade pai</span><select id="unidadePaiId" formControlName="unidadePaiId" aria-describedby="erro-unidadePaiId"><option value="" i18n="@@unidades.formulario.unidadePai.sem">Sem unidade pai</option>@for (unidade of unidadesPai(); track unidade.id) { <option [value]="unidade.id">{{ unidade.codigo }} — {{ unidade.nome }}</option> }</select></label>
+        <label for="emailContato"><span i18n="@@unidades.formulario.email">E-mail de contato</span><input id="emailContato" type="email" formControlName="emailContato" aria-describedby="erro-emailContato" autocomplete="email"></label>
+        <label for="telefone"><span i18n="@@unidades.formulario.telefone">Telefone</span><input id="telefone" formControlName="telefone" aria-describedby="erro-telefone" placeholder="+5511999999999" i18n-placeholder="@@unidades.formulario.telefone.placeholder" autocomplete="tel"></label>
+        <label for="descricao" class="full"><span i18n="@@unidades.formulario.descricao">Descrição</span><textarea id="descricao" formControlName="descricao" rows="4" aria-describedby="erro-descricao"></textarea></label>
       </div>
       @for (campo of ['codigo', 'nome', 'sigla', 'tipo', 'unidadePaiId', 'emailContato', 'telefone', 'descricao']; track campo) {
         @if (mensagemCampo(campo)) { <p class="field-error" [id]="'erro-' + campo">{{ mensagemCampo(campo) }}</p> }
       }
-      <div class="actions"><a routerLink="/administracao/unidades" class="button">Cancelar</a><button type="submit" class="primary" [disabled]="salvando()">{{ salvando() ? 'Salvando…' : (modoEdicao ? 'Salvar alterações' : 'Cadastrar unidade') }}</button></div>
+      <div class="actions">
+        <a routerLink="/administracao/unidades" class="button" i18n="@@unidades.formulario.cancelar">Cancelar</a>
+        @if (salvando()) { <button type="submit" class="primary" disabled i18n="@@unidades.formulario.salvando">Salvando…</button> }
+        @else if (modoEdicao) { <button type="submit" class="primary" i18n="@@unidades.formulario.salvar">Salvar alterações</button> }
+        @else { <button type="submit" class="primary" i18n="@@unidades.formulario.cadastrar">Cadastrar unidade</button> }
+      </div>
     </form>
   }
 </section>

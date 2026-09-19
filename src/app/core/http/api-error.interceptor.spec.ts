@@ -21,9 +21,9 @@ describe('apiErrorInterceptor', () => {
     let recebido: ApiRequestError | undefined;
     client.get('/api/unidades').subscribe({ error: (error) => recebido = error });
     const request = http.expectOne('/api/unidades');
-    request.flush({ error: [{ erro: 'Acesso negado' }], correlationId: 'corr-123' }, { status: 403, statusText: 'Forbidden' });
+    request.flush({ error: [{ erro: 'Acesso negado', codigoErro: 'UNIDADE-0001', campo: 'codigo' }], correlationId: 'corr-123' }, { status: 403, statusText: 'Forbidden' });
 
-    expect(recebido?.message).toBe('Acesso negado');
+    expect(recebido?.message).toBe('Já existe uma unidade organizacional com este código.. Código de atendimento: corr-123.');
     expect(recebido?.correlationId).toBe('corr-123');
   });
 

@@ -44,6 +44,195 @@
           <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="unidades.erro.requisicao" datatype="html">
+        <source>Não foi possível concluir a solicitação. Tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.http.0" datatype="html">
+        <source>Não foi possível conectar ao serviço. Verifique sua conexão e tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.http.401" datatype="html">
+        <source>Sua sessão não está autenticada. Faça login para consultar as unidades.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.http.403" datatype="html">
+        <source>Você não tem permissão para consultar unidades organizacionais.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.http.404" datatype="html">
+        <source>O serviço de unidades organizacionais não foi encontrado.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.http.padrao" datatype="html">
+        <source>Não foi possível carregar as unidades organizacionais. Tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/api-error.interceptor.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0001" datatype="html">
+        <source>Já existe uma unidade organizacional com este código.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002" datatype="html">
+        <source>Verifique o valor informado.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0003" datatype="html">
+        <source>Unidade organizacional não encontrada.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0004" datatype="html">
+        <source>A hierarquia não pode conter ciclos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0005" datatype="html">
+        <source>A unidade pai informada não existe.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0006" datatype="html">
+        <source>Uma unidade ativa não pode ter uma unidade pai inativa.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0007" datatype="html">
+        <source>Não é possível desativar uma unidade com descendentes ativos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0008" datatype="html">
+        <source>Os parâmetros da consulta são inválidos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0009" datatype="html">
+        <source>Esta unidade foi alterada por outra pessoa. Atualize os dados e tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0013" datatype="html">
+        <source>Não é possível reativar uma unidade sob uma unidade pai inativa.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0014" datatype="html">
+        <source>A profundidade da árvore informada é inválida.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0015" datatype="html">
+        <source>A árvore excede o limite permitido para consulta.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.codigo" datatype="html">
+        <source>Informe um código válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.nome" datatype="html">
+        <source>Informe um nome válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.sigla" datatype="html">
+        <source>Informe uma sigla válida.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.descricao" datatype="html">
+        <source>Informe uma descrição válida.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.tipo" datatype="html">
+        <source>Selecione um tipo válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.unidadePaiId" datatype="html">
+        <source>Selecione uma unidade pai válida.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.emailContato" datatype="html">
+        <source>Informe um e-mail de contato válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.0002.telefone" datatype="html">
+        <source>Informe um telefone válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.erro.correlationId" datatype="html">
+        <source><x id="mensagem" equiv-text="mensagem"/>. Código de atendimento: <x id="correlationId" equiv-text="error.correlationId"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/http/unidade-organizacional-error-i18n.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="locale.seletor.rotulo" datatype="html">
         <source>Idioma <x id="START_TAG_SELECT" ctype="x-select" equiv-text="&lt;select [value]=&quot;localeAtual()&quot; (change)=&quot;alterar($event)&quot;&gt;"/><x id="START_BLOCK_FOR" equiv-text="@for (locale of locales; track locale) {"/><x id="START_TAG_OPTION" ctype="x-option" equiv-text="&lt;option [value]=&quot;locale&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{ nomesNativos[locale] }}"/><x id="CLOSE_TAG_OPTION" ctype="x-option" equiv-text="&lt;/option&gt;"/><x id="CLOSE_BLOCK_FOR" equiv-text="}"/><x id="CLOSE_TAG_SELECT" ctype="x-select" equiv-text="&lt;/select&gt;"/></source>
         <context-group purpose="location">
@@ -56,6 +245,342 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/i18n/locale-selector.component.ts</context>
           <context context-type="linenumber">19,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.administracao" datatype="html">
+        <source>Administração</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.titulo" datatype="html">
+        <source>Estrutura organizacional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.descricao" datatype="html">
+        <source>Consulte a hierarquia e mantenha a situação das unidades.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.lista" datatype="html">
+        <source>Ver lista</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.situacao" datatype="html">
+        <source>Situação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.todas" datatype="html">
+        <source>Todas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.ativas" datatype="html">
+        <source>Ativas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.inativas" datatype="html">
+        <source>Inativas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.atualizar" datatype="html">
+        <source>Atualizar árvore</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.carregando" datatype="html">
+        <source>Carregando estrutura organizacional…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.vazia" datatype="html">
+        <source>Nenhuma unidade corresponde ao filtro selecionado.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.aria" datatype="html">
+        <source>Árvore de unidades organizacionais</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.recolher.aria" datatype="html">
+        <source>Recolher ramificação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.expandir.aria" datatype="html">
+        <source>Expandir ramificação</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.editar" datatype="html">
+        <source>Editar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.salvando" datatype="html">
+        <source>Salvando…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.desativar" datatype="html">
+        <source>Desativar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.reativar" datatype="html">
+        <source>Reativar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.html</context>
+          <context context-type="linenumber">27,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.situacao.ativa" datatype="html">
+        <source>Ativa</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.arvore.situacao.inativa" datatype="html">
+        <source>Inativa</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-arvore.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.administracao" datatype="html">
+        <source>Administração</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.titulo.editar" datatype="html">
+        <source>Editar unidade organizacional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.titulo.nova" datatype="html">
+        <source>Nova unidade organizacional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.obrigatorios" datatype="html">
+        <source>Campos marcados com * são obrigatórios.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.voltar" datatype="html">
+        <source>Voltar à lista</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">9,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.carregando" datatype="html">
+        <source>Carregando dados da unidade…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.codigo" datatype="html">
+        <source>Código *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.nome" datatype="html">
+        <source>Nome *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.sigla" datatype="html">
+        <source>Sigla</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.tipo" datatype="html">
+        <source>Tipo *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.tipo.selecione" datatype="html">
+        <source>Selecione</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.unidadePai" datatype="html">
+        <source>Unidade pai</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.unidadePai.sem" datatype="html">
+        <source>Sem unidade pai</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.email" datatype="html">
+        <source>E-mail de contato</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.telefone" datatype="html">
+        <source>Telefone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.telefone.placeholder" datatype="html">
+        <source>+5511999999999</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.descricao" datatype="html">
+        <source>Descrição</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.cancelar" datatype="html">
+        <source>Cancelar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.salvando" datatype="html">
+        <source>Salvando…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.salvar" datatype="html">
+        <source>Salvar alterações</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.cadastrar" datatype="html">
+        <source>Cadastrar unidade</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.html</context>
+          <context context-type="linenumber">33,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.confirmarSaida" datatype="html">
+        <source>Há alterações não salvas. Deseja sair desta tela?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.campo.obrigatorio" datatype="html">
+        <source>Este campo é obrigatório.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.campo.email" datatype="html">
+        <source>Informe um e-mail válido.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.campo.propriaUnidade" datatype="html">
+        <source>Uma unidade não pode ser sua própria unidade pai.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.erro.carregarUnidadesPai" datatype="html">
+        <source>Não foi possível carregar as opções de unidade pai. Tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.erro.salvar" datatype="html">
+        <source>Não foi possível salvar a unidade organizacional. Tente novamente.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unidades.formulario.erro.revisarCampos" datatype="html">
+        <source>Revise os campos destacados.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/unidades-organizacionais/unidades-organizacionais-formulario.component.ts</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="unidades.lista.administracao" datatype="html">

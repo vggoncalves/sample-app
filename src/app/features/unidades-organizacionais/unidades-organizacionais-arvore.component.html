@@ -1,13 +1,33 @@
 <section aria-labelledby="titulo-arvore">
-  <div class="page-heading"><div><p class="eyebrow">Administração</p><h1 id="titulo-arvore">Estrutura organizacional</h1><p>Consulte a hierarquia e mantenha a situação das unidades.</p></div><a class="button" routerLink="/administracao/unidades">Ver lista</a></div>
-  <div class="toolbar"><label for="situacao">Situação<select id="situacao" [value]="filtroAtiva()" (change)="filtroAtiva.set($any($event.target).value); carregar()"><option value="todas">Todas</option><option value="ativas">Ativas</option><option value="inativas">Inativas</option></select></label><button type="button" (click)="carregar()">Atualizar árvore</button></div>
+  <div class="page-heading">
+    <div><p class="eyebrow" i18n="@@unidades.arvore.administracao">Administração</p><h1 id="titulo-arvore" i18n="@@unidades.arvore.titulo">Estrutura organizacional</h1><p i18n="@@unidades.arvore.descricao">Consulte a hierarquia e mantenha a situação das unidades.</p></div>
+    <a class="button" routerLink="/administracao/unidades" i18n="@@unidades.arvore.lista">Ver lista</a>
+  </div>
+  <div class="toolbar">
+    <label for="situacao"><span i18n="@@unidades.arvore.situacao">Situação</span><select id="situacao" [value]="filtroAtiva()" (change)="filtroAtiva.set($any($event.target).value); carregar()"><option value="todas" i18n="@@unidades.arvore.todas">Todas</option><option value="ativas" i18n="@@unidades.arvore.ativas">Ativas</option><option value="inativas" i18n="@@unidades.arvore.inativas">Inativas</option></select></label>
+    <button type="button" (click)="carregar()" i18n="@@unidades.arvore.atualizar">Atualizar árvore</button>
+  </div>
   @if (mensagemErro()) { <div class="state error" role="alert">{{ mensagemErro() }}</div> }
   @if (mensagemAviso()) { <div class="state notice" role="alert" tabindex="-1">{{ mensagemAviso() }}</div> }
-  @if (carregando()) { <output class="state" aria-live="polite">Carregando estrutura organizacional…</output> }
-  @else if (!mensagemErro() && nosVisiveis.length === 0) { <div class="state">Nenhuma unidade corresponde ao filtro selecionado.</div> }
-  @else if (!mensagemErro()) { <ul class="tree" aria-label="Árvore de unidades organizacionais">@for (item of nosVisiveis; track item.no.unidade.id) { <li class="tree-row" [style.--nivel]="item.nivel"><div class="node">
-    @if (item.no.filhas.length) { <button type="button" class="expander" (click)="alternar(item.no)" [attr.aria-expanded]="expandidos().has(item.no.unidade.id)" [attr.aria-label]="(expandidos().has(item.no.unidade.id) ? 'Recolher' : 'Expandir') + ' ' + item.no.unidade.nome">{{ expandidos().has(item.no.unidade.id) ? '−' : '+' }}</button> } @else { <span class="expander-placeholder" aria-hidden="true"></span> }
-    <div class="node-main"><strong>{{ item.no.unidade.codigo }} — {{ item.no.unidade.nome }}</strong><span>{{ rotuloTipo(item.no.unidade.tipo) }} · {{ item.no.unidade.ativa ? 'Ativa' : 'Inativa' }}</span></div>
-    <div class="node-actions">@if (capacidades().podeAlterar) { <a [routerLink]="['/administracao/unidades', item.no.unidade.id, 'editar']">Editar</a> } @if (capacidades().podeAlterarSituacao) { <button type="button" (click)="alterarSituacao(item.no.unidade)" [disabled]="alterandoId() === item.no.unidade.id">{{ alterandoId() === item.no.unidade.id ? 'Salvando…' : (item.no.unidade.ativa ? 'Desativar' : 'Reativar') }}</button> }</div>
-  </div></li> }</ul> }
+  @if (carregando()) { <output class="state" aria-live="polite" i18n="@@unidades.arvore.carregando">Carregando estrutura organizacional…</output> }
+  @else if (!mensagemErro() && nosVisiveis.length === 0) { <div class="state" i18n="@@unidades.arvore.vazia">Nenhuma unidade corresponde ao filtro selecionado.</div> }
+  @else if (!mensagemErro()) {
+    <ul class="tree" aria-label="Árvore de unidades organizacionais" i18n-aria-label="@@unidades.arvore.aria">
+      @for (item of nosVisiveis; track item.no.unidade.id) { <li class="tree-row" [style.--nivel]="item.nivel"><div class="node">
+        @if (item.no.filhas.length) {
+          @if (expandidos().has(item.no.unidade.id)) { <button type="button" class="expander" (click)="alternar(item.no)" aria-expanded="true" aria-label="Recolher ramificação" i18n-aria-label="@@unidades.arvore.recolher.aria">−</button> }
+          @else { <button type="button" class="expander" (click)="alternar(item.no)" aria-expanded="false" aria-label="Expandir ramificação" i18n-aria-label="@@unidades.arvore.expandir.aria">+</button> }
+        } @else { <span class="expander-placeholder" aria-hidden="true"></span> }
+        <div class="node-main"><strong>{{ item.no.unidade.codigo }} — {{ item.no.unidade.nome }}</strong><span>{{ rotuloTipo(item.no.unidade.tipo) }} · {{ rotuloSituacao(item.no.unidade.ativa) }}</span></div>
+        <div class="node-actions">
+          @if (capacidades().podeAlterar) { <a [routerLink]="['/administracao/unidades', item.no.unidade.id, 'editar']" i18n="@@unidades.arvore.editar">Editar</a> }
+          @if (capacidades().podeAlterarSituacao) {
+            @if (alterandoId() === item.no.unidade.id) { <button type="button" disabled i18n="@@unidades.arvore.salvando">Salvando…</button> }
+            @else if (item.no.unidade.ativa) { <button type="button" (click)="alterarSituacao(item.no.unidade)" i18n="@@unidades.arvore.desativar">Desativar</button> }
+            @else { <button type="button" (click)="alterarSituacao(item.no.unidade)" i18n="@@unidades.arvore.reativar">Reativar</button> }
+          }
+        </div>
+      </div></li> }
+    </ul>
+  }
 </section>

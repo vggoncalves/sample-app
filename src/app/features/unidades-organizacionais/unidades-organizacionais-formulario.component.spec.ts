@@ -46,10 +46,10 @@ describe('UnidadesOrganizacionaisFormularioComponent', () => {
   });
 
   it('exibe no campo a regra de negócio devolvida pela API', async () => {
-    await configurar(); service.criar.mockReturnValue(throwError(() => new ApiRequestError('Código já utilizado.', 409, undefined, [{ campo: 'codigo', erro: 'Código já utilizado.' }])));
+    await configurar(); service.criar.mockReturnValue(throwError(() => new ApiRequestError('Código já utilizado.', 409, undefined, [{ campo: 'codigo', codigoErro: 'UNIDADE-0001', erro: 'Código já utilizado.' }])));
     component.formulario.setValue({ codigo: 'DIR-FIN', nome: 'Diretoria Financeira', sigla: '', descricao: '', tipo: 'DIRETORIA', unidadePaiId: '', emailContato: '', telefone: '' });
     component.salvar();
-    expect(component.mensagemCampo('codigo')).toBe('Código já utilizado.');
+    expect(component.mensagemCampo('codigo')).toBe('Já existe uma unidade organizacional com este código.');
     expect(component.mensagemErro()).toBe('Revise os campos destacados.');
   });
 
