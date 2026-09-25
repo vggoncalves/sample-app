@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiRequestError } from '../../core/http/api-error.interceptor';
 import { CapacidadesUnidade, NoArvoreUnidade, UnidadeOrganizacional } from './unidade-organizacional.models';
 import { UnidadeOrganizacionalService } from './unidade-organizacional.service';
 
-interface NoVisivel { no: NoArvoreUnidade; nivel: number; }
+interface NoVisivel { no: NoArvoreUnidade; nivel: number; paiId?: string; }
 const SEM_CAPACIDADES: CapacidadesUnidade = { podeCriar: false, podeAlterar: false, podeAlterarSituacao: false };
 
 @Component({
@@ -25,6 +25,7 @@ export class UnidadesOrganizacionaisArvoreComponent {
   readonly filtroAtiva = signal<'todas' | 'ativas' | 'inativas'>('todas');
 
   private readonly service = inject(UnidadeOrganizacionalService);
+  private readonly host = inject(ElementRef<HTMLElement>);
 
   constructor() { this.carregar(); this.carregarCapacidades(); }
 
@@ -42,6 +43,37 @@ export class UnidadesOrganizacionaisArvoreComponent {
   alternar(no: NoArvoreUnidade): void {
     if (!no.filhas.length) return;
     this.expandidos.update((atual) => { const proximo = new Set(atual); proximo.has(no.unidade.id) ? proximo.delete(no.unidade.id) : proximo.add(no.unidade.id); return proximo; });
+  }
+
+  navegarArvore(event: KeyboardEvent, item: NoVisivel): void {
+    const visiveis = this.nosVisiveis;
+    const indice = visiveis.findIndex((atual) => atual.no.unidade.id === item.no.unidade.id);
+    const focarIndice = (proximo: number) => this.focarNo(visiveis[proximo]?.no.unidade.id);
+
+    switch (event.key) {
+      case "ArrowDown": event.preventDefault(); focarIndice(Math.min(indice + 1, visiveis.length - 1)); break;
+      case "ArrowUp": event.preventDefault(); focarIndice(Math.max(indice - 1, 0)); break;
+      case "Home": event.preventDefault(); focarIndice(0); break;
+      case "End": event.preventDefault(); focarIndice(visiveis.length - 1); break;
+      case "ArrowRight":
+        if (!item.no.filhas.length) return;
+        event.preventDefault();
+        if (!this.expandidos().has(item.no.unidade.id)) this.alternar(item.no);
+        else focarIndice(indice + 1);
+        break;
+      case "ArrowLeft":
+        event.preventDefault();
+        if (item.no.filhas.length && this.expandidos().has(item.no.unidade.id)) this.alternar(item.no);
+        else this.focarNo(item.paiId);
+        break;
+      case "Enter":
+      case " ":
+        if (!item.no.filhas.length) return;
+        event.preventDefault();
+        this.alternar(item.no);
+        break;
+      default: return;
+    }
   }
 
   alterarSituacao(unidade: UnidadeOrganizacional): void {
@@ -62,9 +94,16 @@ rotuloSituacao(ativa: boolean): string {    return ativa ? $localize`:@@unidades
     this.service.capacidades().subscribe({ next: (capacidades) => this.capacidades.set(capacidades), error: () => this.capacidades.set(SEM_CAPACIDADES) });
   }
 
-  private achatar(nos: NoArvoreUnidade[], nivel = 1, resultado: NoVisivel[] = []): NoVisivel[] {
-    for (const no of nos) { resultado.push({ no, nivel }); if (this.expandidos().has(no.unidade.id)) this.achatar(no.filhas, nivel + 1, resultado); }
+  private achatar(nos: NoArvoreUnidade[], nivel = 1, resultado: NoVisivel[] = [], paiId?: string): NoVisivel[] {
+    for (const no of nos) { resultado.push({ no, nivel, paiId }); if (this.expandidos().has(no.unidade.id)) this.achatar(no.filhas, nivel + 1, resultado, no.unidade.id); }
     return resultado;
+  }
+
+  private focarNo(id: string | undefined): void {
+    if (!id) return;
+    const host = this.host.nativeElement as HTMLElement;
+    queueMicrotask(() => Array.from(host.querySelectorAll("[data-treeitem-id]") as NodeListOf<HTMLElement>)
+      .find((element) => element.dataset["treeitemId"] === id)?.focus());
   }
 
   private substituirUnidade(atualizada: UnidadeOrganizacional): void {

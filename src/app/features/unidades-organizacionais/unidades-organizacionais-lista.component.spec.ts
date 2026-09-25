@@ -27,6 +27,13 @@ describe('UnidadesOrganizacionaisListaComponent', () => {
     expect((fixture.nativeElement as HTMLElement).textContent).toContain('Diretoria Financeira');
   });
 
+  it("anuncia a página atual para leitores de tela", async () => {
+    const fixture = await criarComponente(() => of(pagina));
+    const indicador = (fixture.nativeElement as HTMLElement).querySelector("output.pagination-status");
+    expect(indicador?.getAttribute("aria-live")).toBe("polite");
+    expect(indicador?.textContent).toContain("Página 1 de 1");
+  });
+
   it('anuncia carregamento usando o elemento output', async () => {
     const fixture = await criarComponente(() => NEVER);
     const output = (fixture.nativeElement as HTMLElement).querySelector('output.state');

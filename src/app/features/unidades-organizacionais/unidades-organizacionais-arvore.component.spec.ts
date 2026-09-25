@@ -40,4 +40,30 @@ describe('UnidadesOrganizacionaisArvoreComponent', () => {
     const alerta = fixture.nativeElement.querySelector('[role="alert"]');
     expect(alerta?.textContent).toContain('unidades descendentes ativas');
   });
+
+  it("expõe semântica de árvore e permite navegação por teclado", async () => {
+    const { fixture } = await criar();
+    const elemento = fixture.nativeElement as HTMLElement;
+    const arvoreSemantica = elemento.querySelector("[role=tree]");
+    const itens = elemento.querySelectorAll<HTMLElement>("[role=treeitem]");
+    const raiz = itens[0];
+
+    expect(arvoreSemantica).not.toBeNull();
+    expect(raiz.getAttribute("aria-level")).toBe("1");
+    expect(raiz.getAttribute("aria-expanded")).toBe("true");
+    expect(itens[1].getAttribute("aria-level")).toBe("2");
+
+    raiz.focus();
+    raiz.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+    fixture.detectChanges();
+    expect(raiz.getAttribute("aria-expanded")).toBe("false");
+
+    raiz.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    fixture.detectChanges();
+    expect(raiz.getAttribute("aria-expanded")).toBe("true");
+
+    raiz.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));
+    await Promise.resolve();
+    expect(document.activeElement?.getAttribute("data-treeitem-id")).toBe("filha");
+  });
 });

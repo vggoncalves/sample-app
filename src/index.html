@@ -6,6 +6,14 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    (() => {
+      const match = location.pathname.match(/^\/(pt-BR|en|es|fr|ar|hi|zh-Hans)(?:\/|$)/);
+      const locale = match?.[1] ?? "pt-BR";
+      document.documentElement.lang = locale;
+      document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

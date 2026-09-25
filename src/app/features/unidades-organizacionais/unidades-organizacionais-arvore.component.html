@@ -12,11 +12,11 @@
   @if (carregando()) { <output class="state" aria-live="polite" i18n="@@unidades.arvore.carregando">Carregando estrutura organizacional…</output> }
   @else if (!mensagemErro() && nosVisiveis.length === 0) { <div class="state" i18n="@@unidades.arvore.vazia">Nenhuma unidade corresponde ao filtro selecionado.</div> }
   @else if (!mensagemErro()) {
-    <ul class="tree" aria-label="Árvore de unidades organizacionais" i18n-aria-label="@@unidades.arvore.aria">
-      @for (item of nosVisiveis; track item.no.unidade.id) { <li class="tree-row" [style.--nivel]="item.nivel"><div class="node">
+    <ul class="tree" role="tree" aria-label="Árvore de unidades organizacionais" i18n-aria-label="@@unidades.arvore.aria">
+      @for (item of nosVisiveis; track item.no.unidade.id) { <li class="tree-row" role="treeitem" tabindex="0" [attr.data-treeitem-id]="item.no.unidade.id" [attr.aria-level]="item.nivel" [attr.aria-expanded]="item.no.filhas.length ? expandidos().has(item.no.unidade.id) : null" [style.--nivel]="item.nivel" (keydown)="navegarArvore($event, item)"><div class="node">
         @if (item.no.filhas.length) {
-          @if (expandidos().has(item.no.unidade.id)) { <button type="button" class="expander" (click)="alternar(item.no)" aria-expanded="true" aria-label="Recolher ramificação" i18n-aria-label="@@unidades.arvore.recolher.aria">−</button> }
-          @else { <button type="button" class="expander" (click)="alternar(item.no)" aria-expanded="false" aria-label="Expandir ramificação" i18n-aria-label="@@unidades.arvore.expandir.aria">+</button> }
+          @if (expandidos().has(item.no.unidade.id)) { <button type="button" class="expander" tabindex="-1" (click)="alternar(item.no)" aria-label="Recolher ramificação" i18n-aria-label="@@unidades.arvore.recolher.aria">−</button> }
+          @else { <button type="button" class="expander" tabindex="-1" (click)="alternar(item.no)" aria-label="Expandir ramificação" i18n-aria-label="@@unidades.arvore.expandir.aria">+</button> }
         } @else { <span class="expander-placeholder" aria-hidden="true"></span> }
         <div class="node-main"><strong>{{ item.no.unidade.codigo }} — {{ item.no.unidade.nome }}</strong><span>{{ rotuloTipo(item.no.unidade.tipo) }} · {{ rotuloSituacao(item.no.unidade.ativa) }}</span></div>
         <div class="node-actions">
